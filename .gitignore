@@ -232,3 +232,4 @@ next-env.d.ts
 
 private.key
 public.key
+.idea/*
