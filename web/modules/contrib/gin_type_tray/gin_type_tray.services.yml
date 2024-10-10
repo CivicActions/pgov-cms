@@ -1,0 +1,5 @@
+services:
+  gin_type_tray.route_subscriber:
+    class: Drupal\gin_type_tray\Routing\GinTypeTrayRouteSubscriber
+    tags:
+    - { name: event_subscriber }

@@ -1,0 +1,17 @@
+@@ -90,13 +90,14 @@
+         'uuid' => $node->uuid(),
+         // Result of implementing the hook_decoupled_router_info_alter.
+         'owner' => $node->getOwner()->uuid(),
++        'langcode' => 'en',
+       ],
+       'label' => $node->label(),
+       'jsonapi' => [
+         'individual' => $this->buildUrl('/jsonapi/node/article/' . $node->uuid()),
+         'resourceName' => 'node--article',
+-        'pathPrefix' => 'jsonapi',
+-        'basePath' => '/jsonapi',
++        'pathPrefix' => 'subdirectory/jsonapi',
++        'basePath' => '/subdirectory/jsonapi',
+         'entryPoint' => $this->buildUrl('/jsonapi'),
+       ],
+       'meta' => [

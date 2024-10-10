@@ -1,0 +1,11 @@
+@@ -95,7 +123,9 @@
+     UrlMatcherInterface $router,
+     ModuleHandlerInterface $module_handler,
+     ConfigFactoryInterface $config_factory,
+-    AliasManagerInterface $aliasManager
++    AliasManagerInterface $aliasManager,
++    LanguageManagerInterface $language_manager,
++    EntityRepositoryInterface $entity_repository
+   ) {
+     $this->container = $container;
+     $this->logger = $logger;

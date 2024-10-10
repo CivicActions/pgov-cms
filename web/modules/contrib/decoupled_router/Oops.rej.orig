@@ -1,0 +1,61 @@
+@@ -231,13 +231,14 @@
+         'bundle' => 'article',
+         'id' => $node->id(),
+         'uuid' => $node->uuid(),
++        'langcode' => 'en',
+       ],
+       'label' => $node->label(),
+       'jsonapi' => [
+         'individual' => $this->buildUrl('/jsonapi/node/article/' . $node->uuid()),
+         'resourceName' => 'node--article',
+-        'pathPrefix' => 'jsonapi',
+-        'basePath' => '/jsonapi',
++        'pathPrefix' => 'subdirectory/jsonapi',
++        'basePath' => '/subdirectory/jsonapi',
+         'entryPoint' => $this->buildUrl('/jsonapi'),
+       ],
+       'meta' => [
+@@ -310,6 +311,43 @@
+     $this->assertFalse($output['isHomePath']);
+   }
+ 
++  /**
++   * Tests path argument with prefix other than negotiated language.
++   */
++  public function testUrlLanguageNegotiation() {
++    $german = ConfigurableLanguage::createFromLangcode('de');
++    $german->save();
++    $german_node = $this->createNode([
++      'uid' => ['target_id' => $this->user->id()],
++      'type' => 'article',
++      'path' => '/hallo-welt',
++      'title' => 'Hallo Welt',
++      'langcode' => 'de',
++      'status' => NodeInterface::PUBLISHED,
++    ]);
++
++    $this->drupalGet($german_node->toUrl()->toString());
++
++    $this->assertSession()->pageTextContains('Hallo Welt');
++
++    $this->drupalGet(Url::fromRoute('decoupled_router.path_translation'), [
++        'query' => [
++          'path' => '/de/hallo-welt',
++          '_format' => 'json',
++        ],
++      ]);
++    $output = $this->getSession()->getPage()->getContent();
++    // Running tests in chromedriver returns html wrapped around the JSON.
++    if (strpos($output, '<pre') !== FALSE) {
++      $output = $this->assertSession()->elementExists('css', 'pre')->getHtml();
++    }
++    $output = Json::decode($output);
++    $this->assertStringEndsWith('/de/hallo-welt', $output['resolved']);
++    $this->assertSame($german_node->id(), $output['entity']['id']);
++    $this->assertSame('node--article', $output['jsonapi']['resourceName']);
++    $this->assertStringEndsWith('/jsonapi/node/article/' . $german_node->uuid(), $output['jsonapi']['individual']);
++  }
++
+   /**
+    * Computes the base path under which the Drupal managed URLs are available.
+    *

@@ -1,0 +1,18 @@
+teaser:
+  css:
+    theme:
+      css/teaser.css: {}
+
+teaser_list:
+  css:
+    theme:
+      css/teaser--list.css: {}
+  dependencies:
+    - gin_type_tray/teaser
+
+teaser_grid:
+  css:
+    theme:
+      css/teaser--grid.css: {}
+  dependencies:
+    - gin_type_tray/teaser

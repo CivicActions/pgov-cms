@@ -1,0 +1,41 @@
+.type-tray-teaser--list {
+    display: flex;
+    flex-direction: column;
+}
+
+    .type-tray-teaser--list .type-tray__wrapper {
+        position: relative;
+        flex-grow: 1;
+    }
+
+    .type-tray-teaser--list .type-tray__image {
+        display: none;
+        aspect-ratio: 16/9;
+    }
+
+    .type-tray-teaser--list .type-tray__image img {
+        display: block;
+        max-height: 10rem;
+    }
+
+/* 
+Gin Breakpoints
+    mobile: 320px,
+    tablet: 740px,
+    desktop: 980px,
+    wide: 1300px
+ */
+
+ @media screen and (min-width: 740px) {
+
+    .type-tray-teaser--list {
+        flex-direction: row;
+    }
+
+    .type-tray-teaser--list .type-tray__image {
+        display: block;
+        flex-shrink: 0;
+        border-left: 1px solid var(--gin-border-color-layer2);
+        aspect-ratio: unset;
+    }
+}

@@ -1,0 +1,66 @@
+{#
+/**
+ * @file
+ * Template implementation for the type_tray_page theme hook.
+ *
+ * Available variables:
+ * - items: An associative array of content types to be listed, where keys are
+ *   category machine names, and values are arrays of type teasers, keyed by
+ *   type ID.
+ * - layout: How the page should be laid out, either 'list' or 'grid'.
+ * - category_labels: An associative array where keys are category machine
+ *   names, and values their user-facing labels.
+ * - node_add_page_url: A URL for the node add page using the routing system.
+ * - node_add_page_url_list: A Url object for the node add page using the routing system.
+ * - node_add_page_url_grid: A Url object for the node add page using the routing system.
+ */
+#}
+<div class="type-tray layout--{{ layout }}">
+  <div class="type-tray__header">
+    <nav id="type-tray__nav" role="navigation" class="tabs-wrapper is-horizontal is-collapsible" aria-labelledby="secondary-tabs-title" data-drupal-nav-tabs>
+      <ul class="tabs tabs--secondary clearfix" data-drupal-nav-tabs-target>
+        <li class="tabs__tab">
+          {% if layout == 'grid' %}
+          {{ link('Grid', node_add_page_url_grid, create_attribute({'class': ['tabs__link', 'layout-link', 'is-active']})) }}
+          {% else %}
+          {{ link('Grid', node_add_page_url_grid, create_attribute({'class': ['tabs__link', 'layout-link']})) }}
+          {% endif %}
+        </li>
+        <li class="tabs__tab">
+          {% if layout == 'list' %}
+          {{ link('List', node_add_page_url_list, create_attribute({'class': ['tabs__link', 'layout-link', 'is-active']})) }}
+          {% else %}
+          {{ link('List', node_add_page_url_list, create_attribute({'class': ['tabs__link', 'layout-link']})) }}
+          {% endif %}
+        </li>
+      </ul>
+    </nav>
+
+    <div id="type-tray__form" class="panel gin-layer-wrapper">
+      <div class="panel__content">
+        <form role="search" action="/" method="get" onsubmit="return false;">
+          <div class="form-wrapper">
+            <label for="header-search" class="form-item__label">Filter</label>
+            <input type="text" id="header-search" class="search-input form-element" data-type-tray="search-box" placeholder="{{ 'Filter by name'|t }}">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="type-tray__content" class="gin-layer-wrapper">  
+  {% for category, categ_types in items %}
+    <div class="panel category--{{ category|clean_class }}">
+      <h2 id="{{ category|clean_class }}" class="panel__title">{{ category_labels[category] }}</h2>
+      <div class="panel__content">
+        <ul class="card-list {% if layout == 'grid' %}card-list--four-cols{% endif %}">
+          {% for item in categ_types %}
+            <li class="card-list__item" data-type-tray="teaser-wrapper">{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+
+</div>

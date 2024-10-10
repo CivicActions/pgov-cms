@@ -1,0 +1,93 @@
+{#
+/**
+ * @file
+ * Template implementation for the type_tray_teaser theme hook.
+ *
+ * Available variables:
+ * - content_type_entity: The entity type object.
+ * - content_type_link: A link render array for the node/add/[type] page
+ * - nodes_by_type_link: A link render array for the content listing page
+ * - thumbnail_url: The URL of the thumbnail
+ * - thumbnail_alt: The ALT text to be used for the thumbnail
+ * - icon_url: The URL of the icon
+ * - icon_alt: The ALT text to be used for the icon
+ * - short_description: The default description text string.
+ * - extended_description: The extended description (formatted), to be used
+ *   when the layout is "list".
+ * - layout: The layout being used: either "grid" (default) or "list".
+ * - favorite_link_text: The text to use in the Add to Favorites link.
+ * - favorite_link_url: The URL to use in the Add to Favorites link.
+ * - favorite_link_action: The action of the favorite link (add/remove).
+ */
+#}
+{% if layout == 'grid' %}
+{{ attach_library('gin_type_tray/teaser_grid') }}
+{% endif %}
+{% if layout == 'list' %}
+{{ attach_library('gin_type_tray/teaser_list') }}
+{% endif %}
+<div class="type-tray-teaser type-tray-teaser--{{ content_type_entity.id|clean_class }} type-tray-teaser--{{ layout }}">
+
+  {% if layout == 'list' %}
+  <div class="type-tray__wrapper">
+  {% endif %}
+
+    <div class="type-tray__content-wrapper admin-item">
+      {{ link('', content_type_link.url, create_attribute({'class': ['admin-item__link'], 'title': "Create a new #{content_type_entity.label}."})) }}
+
+      <div class="type-tray__icon {% if icon_filetype == 'svg' %}type-tray__icon--vector{% else %}type-tray__icon--raster{% endif %}">
+        {% if icon_url %}
+          {% if icon_filetype == 'svg' %}
+          {{ source(icon_url) }}
+          {% else %}
+          <img width="100" height="100" alt="{{ icon_alt }}" src="{{ icon_url }}" />
+          {% endif %}
+        {% endif %}
+      </div>
+
+      <div class="type-tray__content">
+        <div class="type-tray__title-wrapper">
+          <h3 class="type-tray__title" data-type-tray="title">{{ content_type_entity.label }}</h3>
+        </div>
+
+        {% if short_description %}
+        <div class="type-tray__short-desc">{{ short_description }}</div>
+        {% endif %}
+
+        {% if layout == 'list' %}
+          {% if extended_description %}
+          <div class="type-tray__long-desc">{{ extended_description }}</div>
+          {% endif %}
+        {% endif %}
+      </div>
+
+    </div>
+
+    <div class="type-tray__actions">
+      {% if nodes_by_type_link %}
+        <div class="type-tray__action type-tray__node-link">{{ nodes_by_type_link }}</div>
+      {% endif %}
+      {% if favorite_link_text and favorite_link_url and favorite_link_action %}
+        <div class="type-tray__favorite">
+          {% set aria_value = favorite_link_action == 'add' ? 'false' : 'true' %}
+          <a href="{{ favorite_link_url }}" class="favorite-link" role="checkbox" aria-checked="{{ aria_value }}" aria-label="{{ favorite_link_text }}">
+            <span class="favorite-link__icon"></span>
+            <span class="favorite-link__message">{{ favorite_link_text }}</span>
+          </a>
+        </div>
+      {% endif %}
+    </div>
+
+  {% if layout == 'list' %}
+  </div>
+  {% endif %}
+
+  {% if layout == 'list' %}
+    <div class="type-tray__image">
+      {% if thumbnail_url %}
+        <img alt="{{ thumbnail_alt }}" src="{{ thumbnail_url }}" />
+      {% endif %}
+    </div>
+  {% endif %}
+
+</div>

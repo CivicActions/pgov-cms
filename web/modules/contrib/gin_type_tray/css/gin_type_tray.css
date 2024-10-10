@@ -1,0 +1,70 @@
+/* 
+ * Type Tray Page
+ */
+.type-tray__header {
+    
+}
+
+#type-tray__nav {
+
+}
+
+#type-tray__nav .tabs {
+    margin-bottom: 0;
+}
+
+#type-tray__form {
+    margin-bottom: var(--gin-spacing-density-l);
+}
+
+#type-tray__content.gin-layer-wrapper {
+    padding: var(--gin-spacing-m);
+}
+
+#type-tray__content .panel {
+    margin-top: 0;
+    margin-bottom: var(--gin-spacing-m);
+    border: 0;
+}
+
+#type-tray__content .panel__title {
+    margin: 0 0 var(--gin-spacing-s) 0;
+}
+
+#type-tray__content .panel__content {
+    padding: 0;
+}
+
+.card-list {
+
+}
+
+ul.card-list {
+    list-style-type: none;
+    margin: 0;
+}
+
+#type-tray__content .card-list__item {
+    display: flex;
+    flex-direction: column;
+}
+
+#type-tray__content .card-list__item > .type-tray-teaser {
+    height: 100%;
+}
+
+/* 
+Gin Breakpoints
+    mobile: 320px,
+    tablet: 740px,
+    desktop: 980px,
+    wide: 1300px
+ */
+
+@media screen and (max-width: 740px) {
+
+    #type-tray__content.gin-layer-wrapper {
+        padding: 0;
+        background: none;
+    }
+}

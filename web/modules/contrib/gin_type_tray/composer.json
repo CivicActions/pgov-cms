@@ -1,0 +1,23 @@
+{
+    "name": "drupal/gin_type_tray",
+    "type": "drupal-module",
+    "description": "Themes the Type Tray module for the Gin Admin theme.",
+    "keywords": ["Drupal"],
+    "homepage": "http://drupal.org/project/gin_type_tray",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Aaron Silber (aaronlsilber)",
+            "homepage": "https://drupal.org/u/aaronlsilber",
+            "role": "Maintainer"
+        }
+    ],
+    "support": {
+      "issues": "http://drupal.org/project/issues/gin_type_tray",
+      "source": "http://cgit.drupalcode.org/gin_type_tray"
+    },
+    "require": {
+      "drupal/gin": "^3.0@rc",
+      "drupal/type_tray": "^1.2"
+    }
+}
