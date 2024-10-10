@@ -1,0 +1,15 @@
+uuid: b4116bae-3efa-47e6-8b3f-98d2f38ee1fc
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - subrequests
+id: pgov_frontend
+label: 'PGOV Frontend'
+weight: 4
+is_admin: null
+permissions:
+  - 'access user profiles'
+  - 'bypass node access'
+  - 'issue subrequests'

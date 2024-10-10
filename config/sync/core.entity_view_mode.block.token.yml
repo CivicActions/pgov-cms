@@ -1,0 +1,11 @@
+uuid: da861f92-feac-400c-a37b-467f87549aba
+langcode: en
+status: true
+dependencies:
+  module:
+    - block
+id: block.token
+label: Token
+description: ''
+targetEntityType: block
+cache: true

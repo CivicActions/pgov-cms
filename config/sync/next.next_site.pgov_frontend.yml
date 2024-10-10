@@ -1,0 +1,11 @@
+uuid: f3af24c2-7797-4b8d-9f64-53508de1c82b
+langcode: en
+status: true
+dependencies: {  }
+id: pgov_frontend
+label: 'PGOV Frontend'
+base_url: 'http://localhost:3000/'
+preview_url: 'http://localhost:3000/api/preview'
+preview_secret: secret
+revalidate_url: ''
+revalidate_secret: ''

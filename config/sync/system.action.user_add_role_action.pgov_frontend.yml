@@ -1,0 +1,14 @@
+uuid: 5df646cf-a191-4727-acd2-c8be854f0eab
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.pgov_frontend
+  module:
+    - user
+id: user_add_role_action.pgov_frontend
+label: 'Add the PGOV Frontend role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: pgov_frontend

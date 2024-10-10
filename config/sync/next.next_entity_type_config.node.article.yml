@@ -1,0 +1,11 @@
+uuid: 3b1b8f44-cc27-49d2-8704-ad53f8ddba39
+langcode: en
+status: true
+dependencies: {  }
+id: node.article
+site_resolver: site_selector
+configuration:
+  sites:
+    pgov_frontend: pgov_frontend
+revalidator: ''
+revalidator_configuration: {  }

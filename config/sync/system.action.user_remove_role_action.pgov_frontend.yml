@@ -1,0 +1,14 @@
+uuid: 05eb6280-d102-4af4-98dd-62b64c69d17f
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.pgov_frontend
+  module:
+    - user
+id: user_remove_role_action.pgov_frontend
+label: 'Remove the PGOV Frontend role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: pgov_frontend
