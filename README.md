@@ -14,5 +14,10 @@ Sandbox Frontend URL: http://localhost:3000
 2. `npm install`
 3. Copy `.env.example` to `.env.local`
 4. `npm run dev`
-
-
+5.
+## Contributing
+1. Fork the repository.
+2. Create a new branch: `git checkout -b feature-name`.
+3. Make your changes.
+4. Push your branch: `git push origin feature-name`.
+5. Create a pull request.
