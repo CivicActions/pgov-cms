@@ -11,10 +11,10 @@ interface NodeArticleTeaserProps {
 export function NodeArticleTeaser({ node, ...props }: NodeArticleTeaserProps) {
   return (
     <article {...props}>
-      <Link href={node.path.alias} className="no-underline hover:text-blue-600">
+      <Link href={node.path.alias} className="">
         <h2 className="font-heading-2xl">{node.title}</h2>
       </Link>
-      <div className="mb-4 text-gray-600">
+      <div className="">
         {node.uid?.display_name ? (
           <span>
             Posted by{" "}

@@ -9,7 +9,7 @@ interface NodeArticleProps {
 
 export function NodeArticle({ node, ...props }: NodeArticleProps) {
   return (
-    <article {...props}>
+    <article {...props} className="grid-container">
       <h1 className="mb-4 text-6xl font-black leading-tight">{node.title}</h1>
       <div className="mb-4 text-gray-600">
         {node.uid?.display_name ? (
