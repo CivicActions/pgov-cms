@@ -14,10 +14,13 @@ Sandbox Frontend URL: http://localhost:3000
 2. `npm install`
 3. Copy `.env.example` to `.env.local`
 4. `npm run dev`
-5.
+
 ## Contributing
 1. Fork the repository.
-2. Create a new branch: `git checkout -b feature-name`.
+2. Create a new branch: `git checkout -b ticket-number-feature-name`.
 3. Make your changes.
-4. Push your branch: `git push origin feature-name`.
+4. Push your branch: `git push origin ticket-number-feature-name`.
 5. Create a pull request.
+6. Request code review and reassign ticket.
+7. After code review, assign back to original ticket holder
+8. Ticket holder merges their PR and changes ticket status to done
