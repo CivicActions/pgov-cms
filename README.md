@@ -3,11 +3,18 @@
 Sandbox Drupal URL: https://performance.ddev.site
 Sandbox Frontend URL: http://localhost:3000
 
-## Stand up a local sandbox
+## Initial setup for local sandbox
 1. ddev start
 2. dev composer install
-3. ddev drush config:import --source=config
-4. ddev drush uli
+
+### If no local database exists
+1. In config/core.extension.yml, Change the lines that read standard: 1000 and profile: standard to minimal: 1000 and profile: minimal (to switch the configured install profile to minimal)
+2. ddev drush sql:drop && drush si --existing-config
+3. ddev drush cim
+
+### If you already have a local database for your sandbox
+1. ddev drush cim
+2. ddev drush uli
 
 ## Install frontend
 1. cd `src frontend`
