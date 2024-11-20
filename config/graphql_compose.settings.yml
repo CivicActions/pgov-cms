@@ -114,9 +114,7 @@ entity_config:
       enabled: false
 field_config:
   media:
-    audio:
-      field_media_audio_file:
-        enabled: true
+    audio: {  }
     document:
       field_media_document:
         enabled: true
