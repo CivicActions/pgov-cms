@@ -113,13 +113,14 @@ async function getDrupalData({
   return { node: data.route.entity };
 }
 
-export default async function Page({
-  params,
-  searchParams,
-}: {
-  params: { slug: string[] };
-  searchParams: Record<string, string>;
-}) {
+export default async function Page(
+  props: {
+    params: Promise<{ slug: string[] }>;
+    searchParams: Promise<Record<string, string>>;
+  }
+) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
   const { node } = await getDrupalData({ params, searchParams });
 
   return (
