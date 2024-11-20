@@ -4,8 +4,8 @@ status: true
 dependencies: {  }
 id: pgov_frontend
 label: 'PGOV Frontend'
-base_url: 'http://localhost:3000'
-preview_url: 'http://localhost:3000/api/preview'
-preview_secret: secret
+base_url: 'http://localhost:8080'
+preview_url: 'http://localhost:8080/api/preview'
+preview_secret: chuthish
 revalidate_url: ''
 revalidate_secret: ''
