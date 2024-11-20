@@ -1,0 +1,14 @@
+uuid: 1506568c-118d-4386-bb7a-1c036d6977c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.previewer
+  module:
+    - user
+id: user_add_role_action.previewer
+label: 'Add the Previewer role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: previewer

@@ -1,0 +1,14 @@
+uuid: 43ad95c8-2ce0-4a7a-9888-97cc20b9889b
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.previewer
+  module:
+    - user
+id: user_remove_role_action.previewer
+label: 'Remove the Previewer role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: previewer

@@ -1,0 +1,14 @@
+uuid: 03a60e53-6b7b-4b3e-9372-f568d70d45c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.viewer
+  module:
+    - user
+id: user_add_role_action.viewer
+label: 'Add the Viewer role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: viewer

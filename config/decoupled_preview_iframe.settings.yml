@@ -1,0 +1,18 @@
+_core:
+  default_config_hash: mMcG03Olc08YnNztqP2xraZ8HtmQmCm5VHXd7bV7q00
+redirect_anonymous: false
+redirect_url: ''
+preview_url: 'http://localhost:8080'
+preview_types:
+  node:
+    administration: administration
+    agency: agency
+    article: article
+    fiscal_cycle: fiscal_cycle
+    goal: goal
+    page: page
+    plan: plan
+  taxonomy_term:
+    topics: topics
+route_sync: DECOUPLED_PREVIEW_IFRAME_ROUTE_SYNC
+draft_provider: graphql_compose_preview

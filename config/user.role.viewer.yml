@@ -1,0 +1,17 @@
+uuid: 795dc80b-1238-45c9-b140-60e3006d00d7
+langcode: en
+status: true
+dependencies:
+  module:
+    - graphql
+id: viewer
+label: Viewer
+weight: 4
+is_admin: null
+permissions:
+  - 'administer graphql configuration'
+  - 'bypass graphql access'
+  - 'execute graphql_compose_server arbitrary graphql requests'
+  - 'execute graphql_compose_server persisted graphql requests'
+  - 'use graphql_compose_server graphql explorer'
+  - 'use graphql_compose_server graphql voyager'

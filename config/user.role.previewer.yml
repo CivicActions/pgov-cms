@@ -1,0 +1,19 @@
+uuid: 2f734cf2-245e-4d56-9ef2-0198d8282614
+langcode: en
+status: true
+dependencies:
+  module:
+    - graphql
+    - view_unpublished
+id: previewer
+label: Previewer
+weight: 5
+is_admin: null
+permissions:
+  - 'administer graphql configuration'
+  - 'bypass graphql access'
+  - 'execute graphql_compose_server arbitrary graphql requests'
+  - 'execute graphql_compose_server persisted graphql requests'
+  - 'use graphql_compose_server graphql explorer'
+  - 'use graphql_compose_server graphql voyager'
+  - 'view any unpublished content'

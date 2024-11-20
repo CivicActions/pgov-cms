@@ -17,6 +17,7 @@ module:
   datetime: 0
   datetime_range: 0
   dblog: 0
+  decoupled_preview_iframe: 0
   decoupled_router: 0
   default_content: 0
   dynamic_page_cache: 0
@@ -34,6 +35,7 @@ module:
   graphql_compose_edges: 0
   graphql_compose_image_style: 0
   graphql_compose_menus: 0
+  graphql_compose_preview: 0
   graphql_compose_routes: 0
   graphql_compose_users: 0
   graphql_compose_views: 0
@@ -74,6 +76,7 @@ module:
   update: 0
   user: 0
   variationcache: 0
+  view_unpublished: 0
   views_ui: 0
   pathauto: 1
   views: 10
