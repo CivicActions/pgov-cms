@@ -55,6 +55,10 @@ export async function getStaticProps(
     params = {
       include: "field_image,uid",
     }
+  } else if (type === "node--agency") {
+    params = {
+      include: "field_logo.field_media_image,field_topics",
+    }
   }
 
   const resource = await drupal.getResourceFromContext<DrupalNode>(

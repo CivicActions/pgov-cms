@@ -14,7 +14,7 @@ export default function IndexPage({ nodes }: IndexPageProps) {
   return (
     <Layout>
       <Head>
-        <title>Next.js for Drupal</title>
+        <title>Performance.gov</title>
         <meta
           name="description"
           content="A Next.js site powered by a Drupal backend."
