@@ -1,18 +1,14 @@
 import Image from "next/image";
-import Link from "next/link";
 import { DrupalNode } from "next-drupal";
-
-import { absoluteUrl, formatDate } from "lib/utils";
 
 interface NodeAgencyCardProps {
   node: DrupalNode;
 }
 
 export function NodeAgencyCard({ node, ...props }: NodeAgencyCardProps) {
-  console.log(node);
   return (
-    <div className="usa-card__container" {...props}>
-      <div className="usa-card__body">
+    <div className="usa-card__container radius-0" {...props}>
+      <div className="usa-card__body text-center">
         {node.logo && (
           <Image
             src={node.logo.mediaImage.url}
