@@ -21,7 +21,7 @@ export default function IndexPage({ nodes }: IndexPageProps) {
         />
       </Head>
       <div className="grid-container">
-        <h1 className="font-heading-3xl">Latest Articles.</h1>
+        <h1 className="font-heading-3xl">Track the US Government Goals</h1>
         {nodes?.length ? (
           nodes.map((node) => (
             <div key={node.id} className="grid-row">

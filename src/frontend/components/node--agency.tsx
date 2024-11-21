@@ -8,6 +8,7 @@ interface NodeAgencyProps {
 }
 
 export function NodeAgency({ node, ...props }: NodeAgencyProps) {
+
   return (
     <>
       <div className="grid-row">
