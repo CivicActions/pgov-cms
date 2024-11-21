@@ -9,33 +9,27 @@ interface NodeAgencyCardProps {
 }
 
 export function NodeAgencyCard({ node, ...props }: NodeAgencyCardProps) {
+  console.log(node);
   return (
-    <article {...props}>
-      <Link href={node.path.alias} className="no-underline hover:text-blue-600">
-        <h2 className="font-heading-2xl">{node.title}</h2>
-      </Link>
-      <div className="mb-4 text-gray-600">
-        {node.uid?.display_name ? (
-          <span>
-            Posted by{" "}
-            <span className="font-semibold">{node.uid?.display_name}</span>
-          </span>
-        ) : null}
-        <span> - {formatDate(node.created)}</span>
-      </div>
-      {node.field_image && (
-        <figure className="">
+    <div className="usa-card__container" {...props}>
+      <div className="usa-card__body">
+        {node.logo && (
           <Image
-            src={absoluteUrl(node.field_image.uri.url)}
-            width={768}
-            height={480}
-            alt={node.field_image.resourceIdObjMeta.alt}
+            src={node.logo.mediaImage.url}
+            width={150}
+            height={150}
+            alt={node.logo.mediaImage.alt}
+            priority
+            className="margin-top-3"
           />
-        </figure>
-      )}
-      <Link href={node.path.alias} className="">
-        Read article
-      </Link>
-    </article>
+        )}
+      </div>
+      <div className="usa-card__header">
+        <h4 className="usa-card__heading">{node.title}</h4>
+      </div>
+      <div className="usa-card__footer">
+        <a href={node.path} className="usa-button">Explore agency goals</a>
+      </div>
+    </div>
   );
 }

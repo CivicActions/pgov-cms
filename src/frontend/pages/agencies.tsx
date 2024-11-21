@@ -2,7 +2,7 @@ import { Layout } from "components/layout";
 import { NodeAgencyCard } from "../components/node--agency--card";
 import { drupal } from "lib/drupal";
 
-export async function getStaticProps() {
+export const getStaticProps = async () => {
   const graphqlUrl = drupal.buildUrl("/graphql");
 
   // Fetch the first 50 agencies
@@ -10,36 +10,24 @@ export async function getStaticProps() {
     method: "POST",
     withAuth: true, // Make authenticated requests using OAuth.
     body: JSON.stringify({
-      query: `
-        query {
+      query: `query AgencyQuery {
   nodeAgencies(first: 50) {
-    edges {
-      node {
-        id
-        title
-        logo {
-          ... on MediaImage {
-            id
-            name
-            mediaImage {
-              alt
-              title
-              url
-            }
+    nodes {
+      id
+      title
+      logo {
+        ... on MediaImage {
+          mediaImage {
+            alt
+            url
+            title
           }
         }
-        body {
-          value
-        }
-        link {
-          url
-        }
-        path
       }
+      path
     }
   }
-}
-      `,
+}`,
     }),
   });
 
@@ -47,7 +35,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      agencies: data?.nodeAgencies?.edges ?? [],
+      agencies: data?.nodeAgencies?.nodes ?? [],
     },
   };
 }
@@ -57,15 +45,17 @@ export default function AgenciesPage({ agencies }) {
     <Layout>
       <div>
         <h1 className="font-sans-3xl">Explore federal goals</h1>
-        {agencies?.length ? (
-          agencies.map((node) => (
-            <div key={node.id}>
-              <NodeAgencyCard node={node} />
-            </div>
-          ))
-        ) : (
-          <p className="">No agencies found</p>
-        )}
+        <ul className="usa-card-group">
+          {agencies?.length ? (
+            agencies.map((node) => (
+              <li key={node.id} className="usa-card tablet-lg:grid-col-6 desktop:grid-col-4">
+                <NodeAgencyCard node={node} />
+              </li>
+            ))
+          ) : (
+            <p className="">No agencies found</p>
+          )}
+        </ul>
       </div>
     </Layout>
   );
