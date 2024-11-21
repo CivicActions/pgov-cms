@@ -1,28 +1,9 @@
-import { Layout } from "components/layout"
+import { Layout } from "components/layout";
 import { NodeAgencyCard } from "../components/node--agency--card";
-import { drupal } from "lib/drupal"
-
-export default function AgenciesPage({agencies}) {
-  return (
-    <Layout>
-      <div>
-        <h1 className="font-sans-3xl">Explore federal goals</h1>
-        {agencies?.length ? (
-          agencies.map((node) => (
-            <div key={node.id}>
-              <NodeAgencyCard node={node} />
-            </div>
-          ))
-        ) : (
-          <p className="">No  agencies found</p>
-        )}
-      </div>
-    </Layout>
-  )
-}
+import { drupal } from "lib/drupal";
 
 export async function getStaticProps() {
-  const graphqlUrl = drupal.buildUrl("/graphql")
+  const graphqlUrl = drupal.buildUrl("/graphql");
 
   // Fetch the first 50 agencies
   const response = await drupal.fetch(graphqlUrl.toString(), {
@@ -60,13 +41,32 @@ export async function getStaticProps() {
 }
       `,
     }),
-  })
+  });
 
-  const { data } = await response.json()
+  const { data } = await response.json();
 
   return {
     props: {
       agencies: data?.nodeAgencies?.edges ?? [],
     },
-  }
+  };
+}
+
+export default function AgenciesPage({ agencies }) {
+  return (
+    <Layout>
+      <div>
+        <h1 className="font-sans-3xl">Explore federal goals</h1>
+        {agencies?.length ? (
+          agencies.map((node) => (
+            <div key={node.id}>
+              <NodeAgencyCard node={node} />
+            </div>
+          ))
+        ) : (
+          <p className="">No agencies found</p>
+        )}
+      </div>
+    </Layout>
+  );
 }

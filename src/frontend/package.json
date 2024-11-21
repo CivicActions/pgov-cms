@@ -10,7 +10,8 @@
     "preview": "next build && next start",
     "lint": "next lint",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "prepare": "husky"
   },
   "dependencies": {
     "@trussworks/react-uswds": "^9.1.0",
@@ -30,9 +31,14 @@
     "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.2.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.10",
     "postcss": "^8.4.19",
     "prettier": "^3.2.5",
     "sass": "^1.79.5",
     "typescript": "^4.9.3"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   }
 }

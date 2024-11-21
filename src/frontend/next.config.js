@@ -4,13 +4,13 @@ const path = require("path");
 const nextConfig = {
   images: {
     domains: [process.env.NEXT_IMAGE_DOMAIN],
-    unoptimized: true
+    unoptimized: true,
   },
   sassOptions: {
     includePaths: [
       path.join(__dirname, "node_modules", "@uswds", "uswds", "packages"),
     ],
-  }
-}
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

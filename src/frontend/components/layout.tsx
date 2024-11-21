@@ -1,6 +1,6 @@
-import Link from "next/link"
+import Link from "next/link";
 
-import { PreviewAlert } from "components/preview-alert"
+import { PreviewAlert } from "components/preview-alert";
 import { GovBanner } from "@trussworks/react-uswds";
 
 export function Layout({ children }) {
@@ -14,5 +14,5 @@ export function Layout({ children }) {
         <main className="grid-container">{children}</main>
       </div>
     </>
-  )
+  );
 }

@@ -1,11 +1,11 @@
-import Image from "next/image"
-import Link from "next/link"
-import { DrupalNode } from "next-drupal"
+import Image from "next/image";
+import Link from "next/link";
+import { DrupalNode } from "next-drupal";
 
-import { absoluteUrl, formatDate } from "lib/utils"
+import { absoluteUrl, formatDate } from "lib/utils";
 
 interface NodeArticleTeaserProps {
-  node: DrupalNode
+  node: DrupalNode;
 }
 
 export function NodeArticleTeaser({ node, ...props }: NodeArticleTeaserProps) {
@@ -33,12 +33,9 @@ export function NodeArticleTeaser({ node, ...props }: NodeArticleTeaserProps) {
           />
         </figure>
       )}
-      <Link
-        href={node.path.alias}
-        className=""
-      >
+      <Link href={node.path.alias} className="">
         Read article
       </Link>
     </article>
-  )
+  );
 }

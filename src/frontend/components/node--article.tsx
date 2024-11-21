@@ -1,10 +1,10 @@
-import Image from "next/image"
-import { DrupalNode } from "next-drupal"
+import Image from "next/image";
+import { DrupalNode } from "next-drupal";
 
-import { absoluteUrl, formatDate } from "lib/utils"
+import { absoluteUrl, formatDate } from "lib/utils";
 
 interface NodeArticleProps {
-  node: DrupalNode
+  node: DrupalNode;
 }
 
 export function NodeArticle({ node, ...props }: NodeArticleProps) {
@@ -43,5 +43,5 @@ export function NodeArticle({ node, ...props }: NodeArticleProps) {
         />
       )}
     </article>
-  )
+  );
 }
