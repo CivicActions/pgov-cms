@@ -38,7 +38,7 @@ export const getStaticProps = async () => {
       agencies: data?.nodeAgencies?.nodes ?? [],
     },
   };
-}
+};
 
 export default function AgenciesPage({ agencies }) {
   return (
@@ -48,7 +48,10 @@ export default function AgenciesPage({ agencies }) {
         <ul className="usa-card-group">
           {agencies?.length ? (
             agencies.map((node) => (
-              <li key={node.id} className="usa-card tablet-lg:grid-col-6 desktop:grid-col-4">
+              <li
+                key={node.id}
+                className="usa-card tablet-lg:grid-col-6 desktop:grid-col-4"
+              >
                 <NodeAgencyCard node={node} />
               </li>
             ))

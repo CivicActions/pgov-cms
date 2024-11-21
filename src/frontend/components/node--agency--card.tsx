@@ -24,7 +24,9 @@ export function NodeAgencyCard({ node, ...props }: NodeAgencyCardProps) {
         <h4 className="usa-card__heading">{node.title}</h4>
       </div>
       <div className="usa-card__footer">
-        <a href={node.path} className="usa-button">Explore agency goals</a>
+        <a href={node.path} className="usa-button">
+          Explore agency goals
+        </a>
       </div>
     </div>
   );
