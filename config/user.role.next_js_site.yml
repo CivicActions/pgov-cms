@@ -12,6 +12,11 @@ weight: 4
 is_admin: null
 permissions:
   - 'access user profiles'
+  - 'administer graphql configuration'
+  - 'bypass graphql access'
   - 'bypass node access'
   - 'execute graphql_compose_server arbitrary graphql requests'
+  - 'execute graphql_compose_server persisted graphql requests'
   - 'issue subrequests'
+  - 'use graphql_compose_server graphql explorer'
+  - 'use graphql_compose_server graphql voyager'

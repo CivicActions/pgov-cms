@@ -1,18 +1,18 @@
-uuid: aa03e422-7fa4-4697-8fd7-b6a4398564d0
+uuid: 5ce6c208-070e-4636-a221-decaf386c63d
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: agencies
-label: Agencies
+id: agency
+label: Agency
 type: 'canonical_entities:node'
-pattern: 'agencies/[node:field_acronym]'
+pattern: 'agencies/[node:field_acronym:value]'
 selection_criteria:
-  93cefa45-f74f-4eb7-94e7-6671229fa72b:
+  ce258812-6562-4aa6-a48f-f5a7d2c3e5b6:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 93cefa45-f74f-4eb7-94e7-6671229fa72b
+    uuid: ce258812-6562-4aa6-a48f-f5a7d2c3e5b6
     context_mapping:
       node: node
     bundles:
