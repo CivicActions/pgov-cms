@@ -24,7 +24,8 @@
 # Ignore .env files as they are personal
 /.ddev/.env
 /.env
-keys
+src/frontend/.env
+*.key
 
 # dependencies
 /node_modules
