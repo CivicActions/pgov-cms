@@ -1,4 +1,5 @@
 ---
 packages:
-  - ascii
-  - libxml
+  - awscli
+  - bsdmainutils
+  - nano
