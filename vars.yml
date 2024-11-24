@@ -1,5 +1,1 @@
-drupal_instances: 2
-composer_no_dev: false
-no_proxy: true
 project: PGOV
-CIRCLE_BRANCH: dev
