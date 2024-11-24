@@ -5,21 +5,17 @@ default_config: &defaults
     - https://github.com/cloudfoundry/apt-buildpack
     - php_buildpack
   disk_quota: 2G
-  env:
-    COMPOSER_NO_DEV: false
-    environment: dev
-    LD_LIBRARY_PATH: /home/vcap/app/php/lib/
-    no_proxy: true
-    PHP_INI_SCAN_DIR: /home/vcap/app/php/etc/:/home/vcap/app/php/etc/php.ini.d/
   timeout: 180
-  routes:
-    - route: pgov-drupal-dev.apps.internal
-      protocol: http2
-#  services:
-#    - pgov-mysql-dev
-#    - pgov-secrets-dev
-#    - pgov-static-dev
-#    - pgov-storage-dev
+  random-route: true
+  services:
+    - database # cf create-service aws-rds shared-mysql database
+    - secrets  # cf create-user-provided-service secrets -p '{
+      # "CRON_KEY": ...
+      # "HASH_SALT": ...
+      # "ROOT_USER_NAME": ...,
+    # "ROOT_USER_PASS": ...,
+    # }'
+    - storage  # cf create-service s3 basic-sandbox storage
 
 applications:
   - name: PGOV-CMS
@@ -27,7 +23,6 @@ applications:
     memory: 2048M
     stack: cflinuxfs4
     instances: 2
-    random-route: false
     path: ./
   - name: PGOV-Frontend
     path: ./src/frontend

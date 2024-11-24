@@ -3,3 +3,4 @@ packages:
   - awscli
   - bsdmainutils
   - nano
+  - mariadb-client
