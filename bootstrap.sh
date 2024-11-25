@@ -16,12 +16,13 @@ S3_BUCKET=$(echo "$VCAP_SERVICES" | jq -r '.["s3"][]? | select(.name == "storage
 export S3_BUCKET
 S3_REGION=$(echo "$VCAP_SERVICES" | jq -r '.["s3"][]? | select(.name == "storage") | .credentials.region')
 export S3_REGION
-if [ -n "$S3_BUCKET" ] && [ -n "$S3_REGION" ]; then
-  # Add Proxy rewrite rules to the top of the htaccess file
-  sed "s/^#RewriteRule .s3fs/RewriteRule ^s3fs/" "$DOC_ROOT/template-.htaccess" > "$DOC_ROOT/.htaccess"
-else
-  cp "$DOC_ROOT/template-.htaccess" "$DOC_ROOT/.htaccess"
-fi
+
+#if [ -n "$S3_BUCKET" ] && [ -n "$S3_REGION" ]; then
+#  # Add Proxy rewrite rules to the top of the htaccess file
+#  sed "s/^#RewriteRule .s3fs/RewriteRule ^s3fs/" "$DOC_ROOT/template-.htaccess" > "$DOC_ROOT/.htaccess"
+#else
+#  cp "$DOC_ROOT/template-.htaccess" "$DOC_ROOT/.htaccess"
+#fi
 
 export home="/home/vcap"
 
