@@ -5,8 +5,8 @@ default_config: &defaults
     - https://github.com/cloudfoundry/apt-buildpack
     - php_buildpack
   disk_quota: 2G
+  stack: cflinuxfs4
   timeout: 180
-  random-route: true
   services:
     - database # cf create-service aws-rds shared-mysql database
     - secrets  # cf create-user-provided-service secrets -p '{
@@ -21,13 +21,10 @@ applications:
   - name: PGOV-CMS
     <<: *defaults
     memory: 2048M
-    stack: cflinuxfs4
-    instances: 2
+    instances: 1
     path: ./
-  - name: PGOV-Frontend
-    path: ./src/frontend
-    buildpacks:
-      - nodejs_buildpack
-    routes:
-      - route: pgov-frontend-dev.apps.internal
-        protocol: http2
+#  - name: PGOV-Frontend
+#    path: ./src/frontend
+#    memory: 2048M
+#    buildpacks
+#      - nodejs_buildpack
