@@ -23,8 +23,8 @@ applications:
     memory: 2048M
     instances: 1
     path: ./
-#  - name: PGOV-Frontend
-#    path: ./src/frontend
-#    memory: 2048M
-#    buildpacks
-#      - nodejs_buildpack
+  - name: PGOV-Frontend
+    path: ./src/frontend/out
+    memory: 2048M
+    buildpacks:
+      - staticfile_buildpack

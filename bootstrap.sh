@@ -5,7 +5,6 @@ SECRETS=$(echo "$VCAP_SERVICES" | jq -r '.["user-provided"][] | select(.name == 
 APP_NAME=$(echo "$VCAP_APPLICATION" | jq -r '.name')
 APP_ROOT=$(dirname "${BASH_SOURCE[0]}")
 DOC_ROOT="$APP_ROOT/web"
-#APP_ID=$(echo "$VCAP_APPLICATION" | jq -r '.application_id')
 
 DB_NAME=$(echo "$VCAP_SERVICES" | jq -r '.["aws-rds"][] | .credentials.db_name')
 DB_USER=$(echo "$VCAP_SERVICES" | jq -r '.["aws-rds"][] | .credentials.username')
@@ -23,6 +22,16 @@ if [ -n "$S3_BUCKET" ] && [ -n "$S3_REGION" ]; then
 else
   cp "$DOC_ROOT/template-.htaccess" "$DOC_ROOT/.htaccess"
 fi
+
+export home="/home/vcap"
+
+## Updated ~/.bashrc to update $PATH
+[ -z $(cat ${home}/.bashrc | grep PATH) ] && \
+  touch ${home}/.bashrc && \
+  echo "alias nano=\"${home}/deps/0/apt/bin/nano\"" >> ${home}/.bashrc && \
+  echo "PATH=$PATH:/home/vcap/deps/0/bin/mysql" >> /home/vcap/.bashrc
+
+source ${home}/.bashrc
 
 install_drupal() {
     ROOT_USER_NAME=$(echo "$SECRETS" | jq -r '.ROOT_USER_NAME')
@@ -48,8 +57,13 @@ if [ "${CF_INSTANCE_INDEX:-''}" == "0" ] && [ "${APP_NAME}" == "PGOV-CMS" ]; the
   # If there is no "config:import" command, Drupal needs to be installed
   drush list | grep "config:import" > /dev/null || install_drupal
 
+
   # Import initial content
-  drush migrate
+  cd "$APP_ROOT"
+  chmod +x ./bin/migrate && ./bin/migrate
+
+  # Go into the Drupal web root directory
+  cd "$DOC_ROOT"
 
   # Clear the cache
   drush cache:rebuild

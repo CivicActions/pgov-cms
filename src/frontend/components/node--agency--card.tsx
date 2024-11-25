@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from 'next/link';
 import { DrupalNode } from "next-drupal";
 
 interface NodeAgencyCardProps {
@@ -24,9 +25,11 @@ export function NodeAgencyCard({ node, ...props }: NodeAgencyCardProps) {
         <h4 className="usa-card__heading">{node.title}</h4>
       </div>
       <div className="usa-card__footer">
-        <a href={node.path} className="usa-button">
+        <Link href={{
+          pathname: `/agencies/${node.acronym.toLowerCase()}`
+        }} className="usa-button">
           Explore agency goals
-        </a>
+        </Link>
       </div>
     </div>
   );

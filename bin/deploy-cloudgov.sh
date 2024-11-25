@@ -44,7 +44,7 @@ else
   if [ "$1" = "prod" ] ; then
     cf create-service aws-rds medium-mysql-redundant database
   else
-    cf create-service aws-rds small-mysql database -c '{"enable_functions": true}'
+    cf create-service aws-rds small-mysql database
   fi
 fi
 

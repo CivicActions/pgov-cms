@@ -1,6 +1,6 @@
 ---
 packages:
-  - awscli
   - bsdmainutils
+  - mysql-client
+  - mysql-server
   - nano
-  - mariadb-client

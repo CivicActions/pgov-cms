@@ -8,7 +8,7 @@
 /web/libraries/
 
 # Ignore node modules from USWDS or otherwise.
-*/node_modules/
+node_modules/
 
 # Typically, composer generates a .gitignore to ignore the
 # `settings.php` files.  For cloud.gov and Cloud Foundry, no sensitive
