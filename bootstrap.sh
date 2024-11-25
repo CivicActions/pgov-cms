@@ -32,7 +32,7 @@ install_drupal() {
     : "${ROOT_USER_PASS:?Need and root user pass for Drupal}"
 
     drush si \
-     --db-url=mysql://uq1zt3ea0stw0p3z:pga2byyc7ix82opm8dn4gkvxk@cg-aws-broker-prodkb8a3b2jajdvt7q.ci7nkegdizyy.us-gov-west-1.rds.amazonaws.com:3306/cgawsbrokerprodkb8a3b2jajdvt7 \
+     --db-url=mysql://"$DB_NAME":"$DB_PW"@"$DB_HOST":"$DB_PORT"/"$DB_DB_NAME"?module=mysql#tableprefix \
      --account-name="$ROOT_USER_NAME" \
      --account-pass="$ROOT_USER_PASS" \
      --existing-config
