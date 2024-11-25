@@ -44,7 +44,7 @@ else
   if [ "$1" = "prod" ] ; then
     cf create-service aws-rds medium-mysql-redundant database
   else
-    cf create-service aws-rds small-mysql database
+    cf create-service aws-rds small-mysql database -c '{"enable_functions": true}'
   fi
 fi
 
@@ -82,10 +82,10 @@ cf delete-service-key storage storagekey -f
 cf restart PGOV-CMS
 
 # tell people where to go
-ROUTE=$(cf apps | grep PGOV-CMS | awk '{print $6}')
+ROUTE=$(cf apps | grep PGOV-CMS | awk '{print $4}')
 echo
 echo
-echo "  to log into the drupal site, you will want to go to https://${ROUTE}/user/login and get the username/password from the output of these commands:"
+echo "To log into the drupal site, you will want to go to https://${ROUTE}/user/login and get the username/password from the output of these commands:"
 echo "USERNAME:  cf e PGOV-CMS | grep ROOT_USER_NAME | sed 's/.*: \"\(.*\)\".*/\1/'"
 echo "PASSWORD:  cf e PGOV-CMS | grep ROOT_USER_PASS | sed 's/.*: \"\(.*\)\".*/\1/'"
 echo "  to get in.  Have fun!"

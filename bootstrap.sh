@@ -5,7 +5,7 @@ SECRETS=$(echo "$VCAP_SERVICES" | jq -r '.["user-provided"][] | select(.name == 
 APP_NAME=$(echo "$VCAP_APPLICATION" | jq -r '.name')
 APP_ROOT=$(dirname "${BASH_SOURCE[0]}")
 DOC_ROOT="$APP_ROOT/web"
-APP_ID=$(echo "$VCAP_APPLICATION" | jq -r '.application_id')
+#APP_ID=$(echo "$VCAP_APPLICATION" | jq -r '.application_id')
 
 DB_NAME=$(echo "$VCAP_SERVICES" | jq -r '.["aws-rds"][] | .credentials.db_name')
 DB_USER=$(echo "$VCAP_SERVICES" | jq -r '.["aws-rds"][] | .credentials.username')
@@ -32,7 +32,6 @@ install_drupal() {
     : "${ROOT_USER_PASS:?Need and root user pass for Drupal}"
 
     drush si \
-     --db-url=mysql://"$DB_NAME":"$DB_PW"@"$DB_HOST":"$DB_PORT"/"$DB_DB_NAME"?module=mysql#tableprefix \
      --account-name="$ROOT_USER_NAME" \
      --account-pass="$ROOT_USER_PASS" \
      --existing-config
@@ -40,16 +39,14 @@ install_drupal() {
 
 if [ "${CF_INSTANCE_INDEX:-''}" == "0" ] && [ "${APP_NAME}" == "PGOV-CMS" ]; then
 
+  # make sure database is created
+  echo "create database if $DB_NAME; does not exist" | mysql --host="$DB_HOST" --port="$DB_PORT" --user="$DB_USER" --password="$DB_PW" || true
+
   # Go into the Drupal web root directory
   cd "$DOC_ROOT"
 
   # If there is no "config:import" command, Drupal needs to be installed
   drush list | grep "config:import" > /dev/null || install_drupal
-
-  # Secrets
-#  ADMIN_EMAIL=$(echo "$SECRETS" | jq -r '.ADMIN_EMAIL')
-#  drupal config:override system.site --key mail --value "$ADMIN_EMAIL" > /dev/null
-#  drupal config:override update.settings --key notification.emails.0 --value "$ADMIN_EMAIL" > /dev/null
 
   # Import initial content
   drush migrate
