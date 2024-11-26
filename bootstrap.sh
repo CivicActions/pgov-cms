@@ -24,8 +24,6 @@ export S3_REGION
 #  cp "$DOC_ROOT/template-.htaccess" "$DOC_ROOT/.htaccess"
 #fi
 
-sudo apt-get install mysql-client
-
 export home="/home/vcap"
 
 ## Updated ~/.bashrc to update $PATH
