@@ -2,5 +2,4 @@
 packages:
   - bsdmainutils
   - mysql-client
-  - mysql-server
   - nano

@@ -30,7 +30,7 @@ export home="/home/vcap"
 [ -z $(cat ${home}/.bashrc | grep PATH) ] && \
   touch ${home}/.bashrc && \
   echo "alias nano=\"${home}/deps/0/apt/bin/nano\"" >> ${home}/.bashrc && \
-  echo "PATH=$PATH:/home/vcap/deps/0/bin/mysql" >> /home/vcap/.bashrc
+  echo "PATH=${PATH}:/home/apt/usr/bin/mysql" >> /home/vcap/.bashrc
 
 source ${home}/.bashrc
 
@@ -50,13 +50,13 @@ install_drupal() {
 if [ "${CF_INSTANCE_INDEX:-''}" == "0" ] && [ "${APP_NAME}" == "PGOV-CMS" ]; then
 
   # make sure database is created
-  echo "create database if $DB_NAME; does not exist" | mysql --host="$DB_HOST" --port="$DB_PORT" --user="$DB_USER" --password="$DB_PW" || true
+#  echo "create database $DB_NAME" | mysql --host="$DB_HOST" --port="$DB_PORT" --user="$DB_USER" --password="$DB_PW" || true
 
   # Go into the Drupal web root directory
   cd "$DOC_ROOT"
 
-  # If there is no "config:import" command, Drupal needs to be installed
-  drush list | grep "config:import" > /dev/null || install_drupal
+  # If no drupal version is returned, Drupal needs to be installed
+  install_drupal
 
 
   # Import initial content
