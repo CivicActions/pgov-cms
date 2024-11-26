@@ -24,6 +24,7 @@
 
 # Ignore .env and keu files as they are personal
 .env
+keys
 *.key
 
 # dependencies
