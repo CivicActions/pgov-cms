@@ -1,5 +1,5 @@
 ---
 packages:
   - bsdmainutils
-  - mysql-client
+  - mysql-shell
   - nano

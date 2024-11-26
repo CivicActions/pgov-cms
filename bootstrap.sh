@@ -24,13 +24,14 @@ export S3_REGION
 #  cp "$DOC_ROOT/template-.htaccess" "$DOC_ROOT/.htaccess"
 #fi
 
+sudo apt-get install mysql-client
+
 export home="/home/vcap"
 
 ## Updated ~/.bashrc to update $PATH
 [ -z $(cat ${home}/.bashrc | grep PATH) ] && \
   touch ${home}/.bashrc && \
-  echo "alias nano=\"${home}/deps/0/apt/bin/nano\"" >> ${home}/.bashrc && \
-  echo "PATH=${PATH}:/home/apt/usr/bin/mysql" >> /home/vcap/.bashrc
+  echo "alias nano=\"${home}/deps/0/apt/bin/nano\"" >> ${home}/.bashrc
 
 source ${home}/.bashrc
 
