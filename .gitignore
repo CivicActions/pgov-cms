@@ -11,6 +11,7 @@
 /private
 # Ignore sensitive information
 /web/sites/*/settings.local.php
+/web/sites/*/default.settings.php
 
 # Ignore Drupal's file directory
 /web/sites/*/files/
