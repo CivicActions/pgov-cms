@@ -20,11 +20,10 @@ default_config: &defaults
 applications:
   - name: PGOV-CMS
     <<: *defaults
-    memory: 2048M
+    memory: 256M
     instances: 1
-    path: ./
   - name: PGOV-Frontend
-    path: ./src/frontend/out
-    memory: 2048M
+    path: ./src/frontend
+    memory: 256M
     buildpacks:
-      - staticfile_buildpack
+      - nodejs_buildpack

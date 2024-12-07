@@ -1,5 +1,5 @@
 ---
+cleancache: true
 packages:
-  - bsdmainutils
-  - mysql-client
+  - mariadb-client
   - nano
