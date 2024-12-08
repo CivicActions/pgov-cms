@@ -57,7 +57,7 @@ export async function getStaticProps(
     };
   } else if (type === "node--agency") {
     params = {
-      include: "field_logo.field_media_image,field_topics",
+      include: "field_logo.field_media_image",
     };
   }
 
