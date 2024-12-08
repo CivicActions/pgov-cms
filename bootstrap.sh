@@ -129,12 +129,12 @@ install_drupal() {
     	--locale="en" \
     	-y
 
-# 	if [ "${verbose+isset}" ] && [ "${verbose}" -ge 1 ]
-#	then
-#		printf "\nImporting previous database\n"
-#	fi
-#	drush sql-drop -y
-#   	drush sql-cli < $(drush dd)/../db/dbtestdump.001.sql
+ 	if [ "${verbose+isset}" ] && [ "${verbose}" -ge 1 ]
+	then
+		printf "\nImporting previous database\n"
+	fi
+	drush sql-drop -y
+   	drush sql-cli < ../db/performancedb.sql
 
 	# Set site uuid to match our config
 	if [ "${verbose+isset}" ] && [ "${verbose}" -ge 1 ]
@@ -201,8 +201,8 @@ fi
 drush cache:rebuild --yes
 
 # Complete the migration
-chmod +x ../bin/migrate
-./../bin/migrate
+#chmod +x ../bin/migrate
+#./../bin/migrate
 
 if [ "${verbose+isset}" ] && [ "${verbose}" -ge 1 ]
 then

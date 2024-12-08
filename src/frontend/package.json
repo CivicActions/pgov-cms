@@ -10,8 +10,7 @@
     "preview": "next build && next start",
     "lint": "next lint",
     "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "prepare": "husky"
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@trussworks/react-uswds": "^9.1.0",
@@ -43,7 +42,7 @@
     "**/*": "prettier --write --ignore-unknown"
   },
   "engines": {
-    "node": "22.7.0",
+    "node": "22.11.0",
     "npm": "10.8.3"
   }
 }
