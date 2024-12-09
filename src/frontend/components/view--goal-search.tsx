@@ -1,12 +1,12 @@
 import { useState, useEffect, FormEvent } from "react";
 import { Button } from "@trussworks/react-uswds";
-import { NodeGoal, ViewFilter } from "lib/types";
+import { NodeGoalProps, ViewFilter } from "lib/types";
 import { NodeGoalCard } from "./node--goal--card";
 import { ViewGoalSearchFacet } from "./view--goal-search--facet";
 import { ViewGoalSearchFulltext } from "./view--goal-search--fulltext";
 
 interface ViewGoalSearch {
-  goals: Array<NodeGoal>,
+  goals: Array<NodeGoalProps>,
   description: string,
   filters: Array<ViewFilter>,
   total: number

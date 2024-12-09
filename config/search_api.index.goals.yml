@@ -27,7 +27,7 @@ field_settings:
     label: 'Topics » Taxonomy term » Name'
     datasource_id: 'entity:node'
     property_path: 'field_topics:entity:name'
-    type: text
+    type: string
     dependencies:
       config:
         - field.storage.node.field_topics

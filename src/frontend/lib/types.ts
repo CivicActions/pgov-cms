@@ -1,4 +1,4 @@
-export interface NodeGoal {
+export interface NodeGoalProps {
   title: string,
   body: {
     value: string

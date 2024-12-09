@@ -7,7 +7,7 @@ _core:
 name: graphql_compose_server
 label: 'GraphQL Compose - Server'
 endpoint: /graphql
-debug_flag: 0
+debug_flag: 3
 schema: graphql_compose
 caching: true
 batching: true

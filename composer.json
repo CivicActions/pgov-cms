@@ -123,6 +123,9 @@
         "patches": {
             "drupal/default_content": {
                 "Add a drush command to export all content to config (can be removed once a permanent database is established)": "https://www.drupal.org/files/issues/2023-10-06/2786479-46.patch"
+            },
+            "drupal/graphql_compose": {
+                "Add Storage to GraphQL Compose entity types.": "https://www.drupal.org/files/issues/2024-12-06/3492332-storage-entity.patch"
             }
         }
     },

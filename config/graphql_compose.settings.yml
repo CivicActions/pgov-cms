@@ -8,22 +8,13 @@ entity_config:
       edges_enabled: true
       routes_enabled: true
   image_style:
-    large:
-      enabled: true
+    1x1_third:
+      enabled: false
     media_library:
-      enabled: true
-    medium:
       enabled: true
     thumbnail:
       enabled: true
-    wide:
-      enabled: true
   media:
-    audio:
-      enabled: true
-      query_load_enabled: true
-      edges_enabled: true
-      routes_enabled: true
     document:
       enabled: true
       query_load_enabled: true
@@ -56,8 +47,6 @@ entity_config:
     tools:
       enabled: false
   node:
-    administration:
-      enabled: false
     agency:
       enabled: true
       query_load_enabled: true
@@ -65,21 +54,18 @@ entity_config:
       routes_enabled: true
     article:
       enabled: false
-    coalition:
-      enabled: false
     division:
-      enabled: false
-    period:
       enabled: false
     goal:
       enabled: true
       query_load_enabled: true
       edges_enabled: true
       routes_enabled: true
-    milestone:
-      enabled: false
     objective:
-      enabled: false
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
     page:
       enabled: false
     plan:
@@ -87,18 +73,20 @@ entity_config:
       query_load_enabled: true
       edges_enabled: true
       routes_enabled: true
-    project:
-      enabled: false
-    subgoal:
+    report:
       enabled: true
-      query_load_enabled: true
-      edges_enabled: true
-      routes_enabled: true
-    update:
+  storage:
+    administration:
+      enabled: false
+    indicator:
+      enabled: true
+    measurement:
+      enabled: true
+    period:
+      enabled: true
+    person:
       enabled: false
   taxonomy_term:
-    designations:
-      enabled: false
     tags:
       enabled: true
       query_load_enabled: true
@@ -114,9 +102,6 @@ entity_config:
       enabled: false
 field_config:
   media:
-    audio:
-      field_media_audio_file:
-        enabled: true
     document:
       field_media_document:
         enabled: true
@@ -142,9 +127,30 @@ field_config:
     goal:
       body:
         enabled: true
+      field_goal_type:
+        enabled: true
       field_id:
         enabled: true
+      field_objectives:
+        enabled: true
+      field_period:
+        enabled: true
+      field_plan:
+        enabled: true
       field_topics:
+        enabled: true
+    objective:
+      body:
+        enabled: true
+      field_agency:
+        enabled: true
+      field_division:
+        enabled: true
+      field_goal:
+        enabled: true
+      field_indicators:
+        enabled: true
+      field_objective_type:
         enabled: true
     plan:
       body:
@@ -157,9 +163,42 @@ field_config:
         enabled: true
       field_link:
         enabled: true
-    subgoal: {  }
-  taxonomy_term:
-    topics: {  }
+  storage:
+    indicator:
+      field_description:
+        enabled: true
+      field_dimension:
+        enabled: true
+      field_divisions:
+        enabled: true
+      field_id:
+        enabled: true
+      field_keyness:
+        enabled: true
+      field_measurements:
+        enabled: true
+      field_notes:
+        enabled: true
+      field_objective:
+        enabled: true
+      field_plan:
+        enabled: true
+      field_target:
+        enabled: true
+    measurement:
+      field_indicator:
+        enabled: true
+      field_period:
+        enabled: true
+      field_target_value:
+        enabled: true
+      field_value:
+        enabled: true
+    period:
+      field_date_range:
+        enabled: true
+      field_duration:
+        enabled: true
 settings:
   exclude_unpublished: true
   expose_entity_ids: false
@@ -171,5 +210,8 @@ settings:
   site_name: false
   site_slogan: false
   site_front: true
+  svg_image: false
+  svg_filesize: 100
   inflector_langcode: en
   inflector_singularize: true
+  edge_max_limit: 100

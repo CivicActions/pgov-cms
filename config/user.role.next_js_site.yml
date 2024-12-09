@@ -2,9 +2,14 @@ uuid: d995f54b-897b-49c2-817e-83c99723ca18
 langcode: en
 status: true
 dependencies:
+  config:
+    - storage.storage_type.indicator
+    - storage.storage_type.measurement
+    - storage.storage_type.period
   module:
     - graphql
     - node
+    - storage
     - subrequests
 id: next_js_site
 label: 'Next.js Site'
@@ -20,3 +25,6 @@ permissions:
   - 'issue subrequests'
   - 'use graphql_compose_server graphql explorer'
   - 'use graphql_compose_server graphql voyager'
+  - 'view published indicator storage entities'
+  - 'view published measurement storage entities'
+  - 'view published period storage entities'

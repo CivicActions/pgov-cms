@@ -1,11 +1,12 @@
+import { useEffect } from "react";
 import Head from "next/head";
 import { drupal } from "lib/drupal";
 import { Layout } from "components/layout";
 import GoalsSearchView from "components/view--goal-search";
-import { NodeGoal, ViewFilter } from "lib/types";
+import { NodeGoalProps, ViewFilter } from "lib/types";
 
 interface IndexPageProps {
-  goals: Array<NodeGoal>,
+  goals: Array<NodeGoalProps>,
   description: string,
   filters: Array<ViewFilter>,
   total: number,
@@ -25,6 +26,7 @@ export const getStaticProps = async () => {
           }
           filters {
             options
+            value
           }
           description
           results {
@@ -35,12 +37,7 @@ export const getStaticProps = async () => {
               body {
                 value
               }
-              agencies {
-                ... on NodeAgency {
-                  id
-                  title
-                }
-              }
+              
               topics {
                 ... on TermTopic {
                   id
@@ -53,6 +50,14 @@ export const getStaticProps = async () => {
       }`,
     }),
   });
+
+  // agencies {
+  //   ... on NodeAgency {
+  //     id
+  //     title
+  //     path
+  //   }
+  // }
 
   const { data } = await response.json();
   
@@ -67,6 +72,25 @@ export const getStaticProps = async () => {
 };
 
 export default function IndexPage(props: IndexPageProps) {
+  // useEffect(() => {
+  //   async function fetchjsonapi() {
+  //     const url = "https://performance.ddev.site/jsonapi/storage/indicator"
+  //     try {
+  //       const response = await fetch(url);
+  //       if (!response.ok) {
+  //         throw new Error(`Response status: ${response.status}`);
+  //       }
+    
+  //       const json = await response.json();
+  //       console.log(json);
+  //     } catch (error) {
+  //       console.error(error.message);
+  //     }
+  //   }
+  //   fetchjsonapi()
+  // }, [])
+
+
   return (
     <Layout>
       <Head>

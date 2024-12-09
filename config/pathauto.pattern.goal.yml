@@ -1,0 +1,22 @@
+uuid: 2e0e5832-3a42-4b66-8451-092421bc836e
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: goal
+label: Goal
+type: 'canonical_entities:node'
+pattern: '/agencies[node:field_plan:entity:field_agency:entity:field_acronym]/[node:title]'
+selection_criteria:
+  9702f5f9-3d17-4be3-baea-5c2cf4f01fe3:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 9702f5f9-3d17-4be3-baea-5c2cf4f01fe3
+    context_mapping:
+      node: node
+    bundles:
+      goal: goal
+selection_logic: and
+weight: -5
+relationships: {  }

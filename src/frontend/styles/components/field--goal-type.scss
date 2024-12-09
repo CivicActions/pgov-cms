@@ -1,0 +1,18 @@
+@use "uswds";
+
+.goal-type {
+  position: relative;
+  &::before {
+    @extend .border-bottom-05;
+    content: "";
+    top: 50%;
+    position: absolute;
+    width: 100%;
+    display: block;
+    z-index: -1;
+  }
+}
+
+.goal-type--apg::before {
+  @extend .border-primary-vivid;
+}
