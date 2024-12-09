@@ -1,0 +1,11 @@
+uuid: 3ae92b2f-6d6e-4eba-8847-6118a0599eea
+langcode: en
+status: true
+dependencies: {  }
+id: dev
+label: Dev
+base_url: 'https://pgov-frontend.app.cloud.gov/'
+preview_url: 'https://pgov-frontend.app.cloud.gov/api/preview'
+preview_secret: secret
+revalidate_url: ''
+revalidate_secret: ''
