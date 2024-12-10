@@ -13,7 +13,7 @@ interface ViewGoalSearch {
 }
 
 export default function GoalsSearchView({ filters, goals, total, description }: ViewGoalSearch) {
-  const [fulltext, setFulltext] = useState(filters[0]?.value ? filters[0].value : "")
+  const [fulltext, setFulltext] = useState(filters[0].value ? filters[0].value : "")
   const [facets] = useState([...Object.keys(filters[1].options)])
   const [search, setSearch] = useState(false);
   const [offset, setOffset] = useState(9);
@@ -161,14 +161,14 @@ export default function GoalsSearchView({ filters, goals, total, description }: 
           ))}
         </ul>
       ) : (
-          <div className="usa-alert usa-alert--warning usa-alert--slim">
-            <div className="usa-alert__body">
-              <p className="usa-alert__text">
-                No matching goals.
-              </p>
-            </div>
+        <div className="usa-alert usa-alert--warning usa-alert--slim">
+          <div className="usa-alert__body">
+            <p className="usa-alert__text">
+              No matching goals.
+            </p>
           </div>
-        )}
+        </div>
+      )}
 
       <div className="grid-row flex-justify-center margin-bottom-205">
         {offset < filteredGoalsCount &&
