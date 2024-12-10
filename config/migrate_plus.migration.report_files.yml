@@ -47,7 +47,7 @@ process:
     source:
       - constants/file_destination
       - '@_subfolder'
-      - '@filename'
+      - filename
   uri:
     plugin: file_copy
     source:
