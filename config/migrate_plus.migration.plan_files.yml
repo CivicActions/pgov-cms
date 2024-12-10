@@ -19,7 +19,7 @@ source:
     file_destination: 'public://documents/'
 process:
   uid: constants/uid
-  source_full_path:
+  _source_full_path:
     plugin: extract
     source: File
     index:
@@ -40,19 +40,19 @@ process:
   _subfolder:
     plugin: format_date
     from_format: Y-m-d
-    to_format: Y/m/
+    to_format: /Y/m/
     source: StartDate
-  destination_full_path:
+  _destination_full_path:
     plugin: concat
     source:
       - constants/file_destination
       - '@_subfolder'
-      - filename
+      - '@filename'
   uri:
     plugin: file_copy
     source:
-      - '@source_full_path'
-      - '@destination_full_path'
+      - '@_source_full_path'
+      - '@_destination_full_path'
 destination:
   plugin: 'entity:file'
 migration_dependencies: null
