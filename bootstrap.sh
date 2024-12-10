@@ -172,10 +172,6 @@ drush config-delete -y field.field.node.article.body || echo "Error deleting fie
 if [ "${verbose+isset}" ] && [ "${verbose}" -ge 1 ]
 then
 	printf "\nSync configs from code at %s\n" "../config"
-# 		echo "where am it"
-# 		pwd
-# 		printf "\nwhat is where\n"
-# 		ls -l ../config/system*
 fi
 drush config:import --source='../config' -y
 
