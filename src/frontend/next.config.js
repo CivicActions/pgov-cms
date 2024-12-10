@@ -5,7 +5,7 @@ const cspHeader = `
     default-src 'self';
     script-src 'self' 'unsafe-eval' 'unsafe-inline';
     style-src 'self' 'unsafe-inline';
-    img-src 'self' blob: data:;
+    img-src 'self' https://pgov-cms.app.cloud.gov;
     font-src 'self';
     object-src 'none';
     base-uri 'self';

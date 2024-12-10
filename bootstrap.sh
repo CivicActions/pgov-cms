@@ -201,8 +201,13 @@ fi
 drush cache:rebuild --yes
 
 # Complete the migration of files
-drush migrate:import --update files
-drush migrate:import --update media
+drush migrate:import --update files --debug
+drush migrate:import --update media --debug
+drush migrate:import --update plan_files --debug
+#drush migrate:import --update plan_media
+#drush migrate:import --update report_files
+#drush migrate:import --update report_media
+
 #chmod +x ../bin/migrate
 #./../bin/migrate
 
