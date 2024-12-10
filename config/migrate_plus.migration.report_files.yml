@@ -41,7 +41,7 @@ process:
     plugin: format_date
     from_format: Y-m-d
     to_format: Y/m/
-    source: EndDate
+    source: StartDate
   destination_full_path:
     plugin: concat
     source:

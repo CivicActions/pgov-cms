@@ -40,7 +40,7 @@ process:
   _subfolder:
     plugin: format_date
     from_format: Y-m-d
-    to_format: /Y/m/
+    to_format: Y/m/
     source: StartDate
   _destination_full_path:
     plugin: concat
