@@ -41,13 +41,13 @@ process:
     plugin: format_date
     from_format: Y-m-d
     to_format: Y/m/
-    source: StartDate
+    source: EndDate
   destination_full_path:
     plugin: concat
     source:
       - constants/file_destination
       - '@_subfolder'
-      - filename
+      - '@filename'
   uri:
     plugin: file_copy
     source:
