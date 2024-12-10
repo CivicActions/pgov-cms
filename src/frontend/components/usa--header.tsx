@@ -1,15 +1,22 @@
 import { useState } from 'react';
+import { usePathname } from 'next/navigation'
 import Link from 'next/link';
 import Image from "next/image";
 import { Header, PrimaryNav, Search, NavMenuButton, Title } from "@trussworks/react-uswds";
 import PGovLogo from '../assets/pgov-logo.svg';
 
 export function USAHeader() {
+  const pathname = usePathname();
   const [expanded, setExpanded] = useState(false);
   const onClick = (): void => setExpanded(prvExpanded => !prvExpanded);
+
   const menuItems = [
-    <Link href="/">Goals</Link>,
-    <Link href="/agencies">Agencies</Link>
+    <Link href="/" className={`usa-nav__link ${pathname === "/" ? "usa-current" : ""}`}>
+      <span>Goals</span>
+    </Link>,
+    <Link href="/agencies" className={`usa-nav__link ${pathname.includes("/agencies") ? "usa-current" : ""}`}>
+      <span>Agencies</span>
+    </Link>,
   ];
 
   return(
