@@ -1,11 +1,18 @@
 uuid: 8625f358-9ad4-47a6-aa18-c63bb4445bf1
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - next_extras
+third_party_settings:
+  next_extras:
+    revalidate: false
+    revalidate_paths: ''
 id: node.goal
 site_resolver: site_selector
 configuration:
   sites:
+    dev: dev
     pgov_frontend: pgov_frontend
 revalidator: ''
 revalidator_configuration: {  }

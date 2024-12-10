@@ -50,7 +50,10 @@ module:
   jsonapi: 0
   jsonapi_defaults: 0
   jsonapi_extras: 0
+  key: 0
+  key_asymmetric: 0
   link: 0
+  login_gov: 0
   media: 0
   media_library: 0
   menu_link_content: 0
@@ -65,11 +68,13 @@ module:
   next_jsonapi: 0
   node: 0
   node_title_length: 0
+  openid_connect: 0
   options: 0
   page_cache: 0
   path: 0
   path_alias: 0
   pgov_migrate: 0
+  responsive_image: 0
   rest: 0
   search: 0
   search_api: 0
@@ -80,6 +85,7 @@ module:
   storage: 0
   subrequests: 0
   svg_image: 0
+  svg_image_responsive: 0
   system: 0
   taxonomy: 0
   text: 0
@@ -93,6 +99,7 @@ module:
   variationcache: 0
   views_ui: 0
   pathauto: 1
+  externalauth: 10
   views: 10
   minimal: 1000
 theme:
