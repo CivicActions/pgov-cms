@@ -30,7 +30,7 @@ export function NodeAgency({ node, ...props }: NodeAgencyProps) {
             data-heading-elements=""
           >
             <nav aria-label="On this page" className="usa-in-page-nav__nav">
-              <h4 className="usa-in-page-nav__heading" tabIndex="0">
+              <h4 className="usa-in-page-nav__heading">
                 On this page
               </h4>
               <ul className="usa-in-page-nav__list">

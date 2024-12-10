@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 id: pgov_frontend
-label: 'PGOV Frontend'
+label: Sandbox
 base_url: 'http://localhost:3000'
 preview_url: 'http://localhost:3000/api/preview'
 preview_secret: secret

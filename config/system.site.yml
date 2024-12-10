@@ -3,12 +3,12 @@ _core:
 langcode: en
 uuid: e03836a7-b4a8-4148-9dab-7e55fe4b203a
 name: Performance.gov
-mail: admin@example.com
+mail: adrienne.cabouet@gsa.gov
 slogan: ''
 page:
   403: ''
   404: ''
-  front: /node
+  front: /node/1
 admin_compact_mode: false
 weight_select_max: 100
 default_langcode: en

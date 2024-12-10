@@ -25,6 +25,11 @@ export const getStaticProps = async () => {
         }
       }
       path
+      link {
+        url
+        internal
+      }
+      acronym
     }
   }
 }`,
