@@ -14,7 +14,7 @@ interface ViewGoalSearch {
 
 export default function GoalsSearchView({ filters, goals, total, description }: ViewGoalSearch) {
   const [fulltext, setFulltext] = useState(filters[0]?.value ? filters[0].value : "")
-  // const [facets] = useState([...Object.keys(filters[1].options)])
+  const [facets] = useState([...Object.keys(filters[1].options)])
   const [search, setSearch] = useState(false);
   const [offset, setOffset] = useState(9);
   const [activeTopics, setActiveTopics] = useState([])
@@ -59,13 +59,13 @@ export default function GoalsSearchView({ filters, goals, total, description }: 
         })
 
         if(hasFulltext ) {
-          
+
           return goal
         } else {
           return null
         }
       })
-      
+
     }
 
     if (activeTopics.length > 0) {
@@ -89,7 +89,7 @@ export default function GoalsSearchView({ filters, goals, total, description }: 
 
     setNotDisabledTopics(notDisabled)
     setFilteredGoalsCount(currentGoals.length)
-    
+
     if (resetOffset) {
       currentGoals = currentGoals.slice(0, 9);
       setOffset(9)
@@ -124,31 +124,31 @@ export default function GoalsSearchView({ filters, goals, total, description }: 
         setFulltext={setFulltext}
         handleSearch={handleSearch}
       />
-      {/*<ul className="add-list-reset grid-row flex-justify-center margin-bottom-205">*/}
-      {/*  {facets.length ? (*/}
-      {/*    facets.map((topic) => (*/}
-      {/*      <li*/}
-      {/*        className="margin-bottom-05"*/}
-      {/*        key={topic.replace( /\s/g, '')}*/}
-      {/*      >*/}
-      {/*        <ViewGoalSearchFacet*/}
-      {/*          topic={topic}*/}
-      {/*          notDisabledTopics={notDisabledTopics}*/}
-      {/*          activeTopics={activeTopics}*/}
-      {/*          updateTopicFilters={updateTopicFilters}*/}
-      {/*        />*/}
-      {/*      </li>*/}
-      {/*    ))*/}
-      {/*  ) : (*/}
-      {/*    <div className="usa-alert usa-alert--warning usa-alert--slim">*/}
-      {/*      <div className="usa-alert__body">*/}
-      {/*        <p className="usa-alert__text">*/}
-      {/*          No facets found.*/}
-      {/*        </p>*/}
-      {/*      </div>*/}
-      {/*    </div>*/}
-      {/*  )}*/}
-      {/*</ul>*/}
+      <ul className="add-list-reset grid-row flex-justify-center margin-bottom-205">
+        {facets.length ? (
+          facets.map((topic) => (
+            <li
+              className="margin-bottom-05"
+              key={topic.replace( /\s/g, '')}
+            >
+              <ViewGoalSearchFacet
+                topic={topic}
+                notDisabledTopics={notDisabledTopics}
+                activeTopics={activeTopics}
+                updateTopicFilters={updateTopicFilters}
+              />
+            </li>
+          ))
+        ) : (
+          <div className="usa-alert usa-alert--warning usa-alert--slim">
+            <div className="usa-alert__body">
+              <p className="usa-alert__text">
+                No facets found.
+              </p>
+            </div>
+          </div>
+        )}
+      </ul>
       {filteredGoals?.length ? (
         <ul className="usa-card-group">
           {filteredGoals.map((goal) => (
