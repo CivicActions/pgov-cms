@@ -53,7 +53,7 @@ export function FieldObjectives({fieldObjectives} : FieldObjectiveProps) {
           <li key={objective.id} className={`${index > 0 ? "border-top" : ""}`}>
             <h3 id={objective.id}>{objective.title}</h3>
             <h4 className="margin-bottom-0">Performance indicators</h4>
-            {objective.indicators.length > 0 && (
+            {objective.indicators?.length > 0 && (
               <ol className="add-list-reset">
                 {objective.indicators.map((indicator) => (
                   <li key={indicator.id}>
