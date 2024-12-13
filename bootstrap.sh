@@ -162,12 +162,9 @@ fi
 drush deploy
 
 # Complete the migration of files
-drush migrate:import files
-drush migrate:import media
-drush migrate:import plan_files
-
-# Make cron script runnable
-chmod +x ./../cronish.sh
+drush migrate:import --update files
+drush migrate:import --update media
+drush migrate:import --update plan_files
 
 if [ "${verbose+isset}" ] && [ "${verbose}" -ge 1 ]
 then

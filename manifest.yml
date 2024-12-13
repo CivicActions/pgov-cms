@@ -21,13 +21,7 @@ applications:
   - name: PGOV-CMS
     <<: *defaults
     memory: 512M
-    instances: 2
-  - name: cronish
-    <<: *defaults
-    no-route: true
-    command: ./cronish.sh
-    health-check-type: process
-    memory: 128M
+    instances: 1
   - name: PGOV-Frontend
     path: ./src/frontend
     memory: 256M
