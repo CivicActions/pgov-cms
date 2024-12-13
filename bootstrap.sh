@@ -120,13 +120,10 @@ install_drupal() {
 	then
 		printf "\nRunning drush site-install\n"
 	fi
-	drush site-install --existing-config \
+	drush site-install minimal --existing-config \
     	--db-url="mysql://$DB_USER:$DB_PW@$DB_HOST:$DB_PORT/$DB_NAME" \
     	--account-name="$ROOT_USER_NAME" \
     	--account-pass="$ROOT_USER_PASS" \
-    	--site-name="Performance.gov" \
-    	--site-mail="adrienne.cabouet@gsa.gov" \
-    	--locale="en" \
     	-y
 
  	if [ "${verbose+isset}" ] && [ "${verbose}" -ge 1 ]
@@ -150,43 +147,11 @@ install_drupal() {
 
 }
 
-
 # Go into the Drupal web root directory
 cd "$DOC_ROOT"
 
 # If there is no "config:import" command, Drupal needs to be installed
 drush list | grep "config:import" > /dev/null || install_drupal
-
-# Delete some data created in the "standard" install profile
-# See https://www.drupal.org/project/drupal/issues/2583113
-if [ "${verbose+isset}" ] && [ "${verbose}" -ge 1 ]
-then
-	printf "\nCleaning up shortcuts, etc.\n"
-fi
-# drush entity:delete shortcut_set
-drush entity:delete shortcut -y || echo "Error deleting shortcut entity"
-drush entity:delete shortcut_set -y || echo "Error deleting shortcut_set entity"
-drush config-delete -y field.field.node.article.body || echo "Error deleting field.field.node.article.body"
-
-# Sync configs from code
-if [ "${verbose+isset}" ] && [ "${verbose}" -ge 1 ]
-then
-	printf "\nSync configs from code at %s\n" "../config"
-fi
-drush config:import --source='../config' -y
-
-# Secrets
-if [ "${verbose+isset}" ] && [ "${verbose}" -ge 1 ]
-then
-	printf "\nSetting email\n"
-fi
-ADMIN_EMAIL=$(echo "$SECRETS" | jq -r '.ADMIN_EMAIL')
-drush config-set "system.site" mail "$ADMIN_EMAIL" --yes
-drush config-set "update.settings" notification.emails.0 "$ADMIN_EMAIL" --yes
-if [ "${verbose+isset}" ] && [ "${verbose}" -ge 1 ]
-then
-	printf "\nAdmin email: %s\n" "$ADMIN_EMAIL"
-fi
 
 # Clear the cache
 if [ "${verbose+isset}" ] && [ "${verbose}" -ge 1 ]
@@ -194,12 +159,12 @@ then
 	printf "\nRebuild cachce\n"
 fi
 
-drush cache:rebuild --yes
+drush deploy
 
 # Complete the migration of files
-drush migrate:import --update files
-drush migrate:import --update media
-drush migrate:import --update plan_files
+drush migrate:import files
+drush migrate:import media
+drush migrate:import plan_files
 #drush migrate:import --update report_files
 #drush migrate:import --update report_media
 
@@ -207,7 +172,7 @@ drush migrate:import --update plan_files
 #./../bin/migrate
 
 # Make cron script runnable
-chmod +x ./cronish.sh
+chmod +x ./../cronish.sh
 
 if [ "${verbose+isset}" ] && [ "${verbose}" -ge 1 ]
 then
