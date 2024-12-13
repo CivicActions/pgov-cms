@@ -156,7 +156,7 @@ drush list | grep "config:import" > /dev/null || install_drupal
 # Clear the cache
 if [ "${verbose+isset}" ] && [ "${verbose}" -ge 1 ]
 then
-	printf "\nRebuild cachce\n"
+	printf "\nRebuild cache and update DB\n"
 fi
 
 drush deploy
@@ -165,11 +165,6 @@ drush deploy
 drush migrate:import files
 drush migrate:import media
 drush migrate:import plan_files
-#drush migrate:import --update report_files
-#drush migrate:import --update report_media
-
-#chmod +x ../bin/migrate
-#./../bin/migrate
 
 # Make cron script runnable
 chmod +x ./../cronish.sh
