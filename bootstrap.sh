@@ -23,7 +23,7 @@ shift $((OPTIND-1))
 
 if [ ! -z "${manpage+isset}" ];
 then
-	printf "Drupal on Cloud.gov bootstrap script
+	printf "Performance.gov bootstrap script
 Options:
 	-v N		Verbosity level
 	-n  		No Op - dry run

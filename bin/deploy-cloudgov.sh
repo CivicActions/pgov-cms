@@ -67,7 +67,9 @@ until cf create-service-key database test-db-ok ; do
 done
 cf delete-service-key database test-db-ok -f
 
+# make the bootstrap script runnable
 chmod +x ./bootstrap.sh
+
 # launch the apps
 cf push
 
@@ -80,6 +82,9 @@ cf set-env PGOV-CMS S3_BUCKET "$S3_BUCKET"
 cf set-env PGOV-CMS S3_REGION "$S3_REGION"
 cf delete-service-key storage storagekey -f
 cf restart PGOV-CMS
+
+# Set basic auth credentials
+htpasswd -b -c /etc/apache2/.htpasswd  admin civicactions
 
 # tell people where to go
 ROUTE=$(cf apps | grep PGOV-CMS | awk '{print $4}')
