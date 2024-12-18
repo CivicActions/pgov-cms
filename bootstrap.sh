@@ -43,7 +43,6 @@ fi
 
  source ${home}/.bashrc
 
-
 ## App Info
 SECRETS=$(echo "$VCAP_SERVICES" | jq -r '.["user-provided"][] | select(.name == "secrets") | .credentials')
 APP_NAME=$(echo "$VCAP_APPLICATION" | jq -r '.name')
@@ -144,7 +143,6 @@ install_drupal() {
 	then
 		printf "\nSite UUID set to: %s\n" "${UUID}"
 	fi
-
 }
 
 # Go into the Drupal web root directory
@@ -161,6 +159,12 @@ fi
 
 drush deploy
 
+ # Set basic auth credentials
+ chmod 775 /home/vcap/app/apache2
+ htpasswd -b -c /home/vcap/app/apache2/.htpasswd  admin civicactions
+
+ # Restart nginx
+# service nginx restart
 
 if [ "${verbose+isset}" ] && [ "${verbose}" -ge 1 ]
 then

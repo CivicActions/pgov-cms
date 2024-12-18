@@ -83,9 +83,6 @@ cf set-env PGOV-CMS S3_REGION "$S3_REGION"
 cf delete-service-key storage storagekey -f
 cf restart PGOV-CMS
 
-# Set basic auth credentials
-htpasswd -b -c /etc/apache2/.htpasswd  admin civicactions
-
 # tell people where to go
 ROUTE=$(cf apps | grep PGOV-CMS | awk '{print $4}')
 echo
