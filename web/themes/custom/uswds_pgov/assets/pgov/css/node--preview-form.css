@@ -1,0 +1,23 @@
+.node-preview-container.node-preview-container {
+  height: inherit;
+}
+
+.node-preview-container.node-preview-container .node-preview-form-select {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  min-width: 100%;
+}
+
+.node-preview-container form.node-preview-form-select a {
+  font-weight: 700;
+}
+
+.node-preview-container form.node-preview-form-select label {
+  color: #1b1b1b;
+}
+
+.node-preview-container.node-preview-container .form-item-view-mode {
+  display: none;
+}

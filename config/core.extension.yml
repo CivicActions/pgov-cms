@@ -101,4 +101,6 @@ theme:
   claro: 0
   gin: 0
   olivero: 0
+  uswds_base: 0
+  uswds_pgov: 0
 profile: minimal

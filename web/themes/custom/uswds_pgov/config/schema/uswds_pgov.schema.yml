@@ -1,0 +1,131 @@
+constellation_catalog.settings:
+  type: theme_settings
+  label: 'Constellation DKAN Catalog'
+  mapping:
+    features:
+      type: mapping
+      label: 'Features'
+      mapping:
+        node_user_picture:
+          type: boolean
+          label: 'Node user picture'
+        comment_user_picture:
+          type: boolean
+          label: 'Comment user picture'
+        comment_user_verification:
+          type: boolean
+          label: 'Comment user verification'
+        favicon:
+          type: boolean
+          label: 'Favicon'
+    logo:
+      type: mapping
+      label: 'Logo'
+      mapping:
+        use_default:
+          type: boolean
+          label: 'Use default'
+    favicon:
+      type: mapping
+      label: 'Favicon'
+      mapping:
+        use_default:
+          type: boolean
+          label: 'Use default'
+    cdn_provider:
+      type: string
+      label: 'CDN provider'
+    cdn_custom_img:
+      type: uri
+      label: 'CDN custom image'
+    cdn_custom_css:
+      type: uri
+      label: 'CDN custom CSS'
+    cdn_custom_css_min:
+      type: uri
+      label: 'CDN custom CSS min'
+    cdn_custom_js:
+      type: uri
+      label: 'CDN custom JS'
+    cdn_custom_js_min:
+      type: uri
+      label: 'CDN custom JS min'
+    uswds_header_style:
+      type: string
+      label: 'USWDS header style'
+    uswds_header_mega:
+      type: integer
+      label: 'USWDS header mega'
+    uswds_header_mega_display_second:
+      type: integer
+      label: 'USWDS header mega display second'
+    uswds_government_banner:
+      type: integer
+      label: 'USWDS government banner'
+    uswds_footer_style:
+      type: string
+      label: 'USWDS footer style'
+    uswds_footer_agency:
+      type: integer
+      label: 'USWDS footer agency'
+    uswds_footer_agency_name:
+      type: string
+      label: 'USWDS footer agency name'
+    uswds_footer_agency_url:
+      type: uri
+      label: 'USWDS footer agency URL'
+    uswds_footer_agency_logo:
+      type: string
+      label: 'USWDS footer agency logo'
+    uswds_contact_center:
+      type: string
+      label: 'USWDS contact center'
+    uswds_email:
+      type: string
+      label: 'USWDS email'
+    uswds_phone:
+      type: string
+      label: 'USWDS phone'
+    uswds_facebook:
+      type: string
+      label: 'USWDS Facebook'
+    uswds_instagram:  
+      type: string
+      label: 'USWDS Instagram'
+    uswds_linkedin:
+      type: string
+      label: 'USWDS LinkedIn'
+    uswds_twitter:
+      type: string
+      label: 'USWDS Twitter'
+    uswds_youtube:
+      type: string
+      label: 'USWDS YouTube'
+    uswds_rss:
+      type: uri
+      label: 'USWDS RSS'
+    uswds_paragraphs_edge_to_edge:
+      type: integer
+      label: 'USWDS paragraphs edge to edge'
+    uswds_menu_accordion_duplicate_parent:
+      type: integer
+      label: 'USWDS menu accordion duplicate parent'
+    uswds_menu_bypass:
+      type: mapping
+      label: 'USWDS menu bypass'
+      mapping:
+        primary_menu:
+          type: integer
+          label: 'Primary menu'
+        secondary_menu:
+          type: integer
+          label: 'Secondary menu'
+        sidebar_first:
+          type: integer
+          label: 'Sidebar first'
+        sidebar_second:
+          type: integer
+          label: 'Sidebar second'
+        footer_menu:
+          type: integer
+          label: 'Footer menu'

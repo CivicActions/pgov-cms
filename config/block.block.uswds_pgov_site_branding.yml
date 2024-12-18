@@ -1,0 +1,25 @@
+uuid: 6450748c-c8d5-4d4c-8ec5-454720551805
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - uswds_pgov
+_core:
+  default_config_hash: n_nlgjggHVfQt2H__zvLOKB2YtjPDbQ5tHijF9LE1aM
+id: uswds_pgov_site_branding
+theme: uswds_pgov
+region: header
+weight: 0
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: false
+visibility: {  }

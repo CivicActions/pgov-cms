@@ -1,0 +1,38 @@
+<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="pgov-logo-56px 14" clip-path="url(#clip0_2557_1021)">
+<g id="Clip path group">
+<mask id="mask0_2557_1021" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="56" height="56">
+<g id="clip0_275_407">
+<path id="Vector" d="M0 0H56V56H0V0Z" fill="white"/>
+</g>
+</mask>
+<g mask="url(#mask0_2557_1021)">
+<g id="Group">
+<path id="Vector_2" d="M56 2.1525H0V16.9217H56V2.1525Z" fill="#4083FF"/>
+<path id="Vector_3" d="M56 25.5371H0V19.3833H56V25.5371Z" fill="#002578"/>
+<path id="Vector_4" d="M56 31.6909H0V27.9986H56V31.6909Z" fill="#E52207"/>
+<path id="Vector_5" d="M31.4559 28.3063H22.2867V15.9987H31.4559C33.8559 15.9987 36.8098 17.1063 36.8098 22.1525C36.8098 27.2602 33.8559 28.3063 31.4559 28.3063ZM5.979 53.8448H27.2098V52.0602H22.2867V38.5217H30.8405C39.5175 38.5217 48.379 35.4448 48.379 22.1525C48.379 8.92172 39.2713 5.84479 30.5944 5.84479H5.979V7.62941H10.9021V52.0602H5.979V53.8448Z" fill="black"/>
+<g id="Mask group">
+<mask id="mask1_2557_1021" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="5" y="5" width="44" height="49">
+<g id="Group_2">
+<path id="Vector_6" d="M31.4559 28.3063H22.2867V15.9987H31.4559C33.8559 15.9987 36.8098 17.1063 36.8098 22.1525C36.8098 27.2602 33.8559 28.3063 31.4559 28.3063ZM5.979 53.8448H27.2098V52.0602H22.2867V38.5217H30.8405C39.5175 38.5217 48.379 35.4448 48.379 22.1525C48.379 8.92172 39.2713 5.84479 30.5944 5.84479H5.979V7.62941H10.9021V52.0602H5.979V53.8448Z" fill="black"/>
+</g>
+</mask>
+<g mask="url(#mask1_2557_1021)">
+<g id="Group_3">
+<path id="Vector_7" d="M56 2.15253H0V16.9217H56V2.15253Z" fill="#0D2656"/>
+<path id="Vector_8" d="M56 25.5372H0V19.3834H56V25.5372Z" fill="#00184D"/>
+<path id="Vector_9" d="M56 31.691H0V27.9987H56V31.691Z" fill="#860707"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_2557_1021">
+<rect width="56" height="56" fill="white"/>
+</clipPath>
+</defs>
+</svg>

@@ -1,0 +1,22 @@
+uuid: 88fa25fb-88c6-40ea-9ece-46a0c72112cb
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - uswds_pgov
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: uswds_pgov_content
+theme: uswds_pgov
+region: content
+weight: -5
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

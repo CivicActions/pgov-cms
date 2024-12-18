@@ -1,0 +1,22 @@
+uuid: 7802f8b4-289a-4f2a-90e9-14776d1ea929
+langcode: en
+status: true
+dependencies:
+  theme:
+    - uswds_pgov
+_core:
+  default_config_hash: nGE3EoPQQaQCuqTUtZgw0-KIzmrqdKDzdNQf2JyPUt4
+id: uswds_pgov_primary_local_tasks
+theme: uswds_pgov
+region: highlighted
+weight: -4
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primary tabs'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: false
+visibility: {  }

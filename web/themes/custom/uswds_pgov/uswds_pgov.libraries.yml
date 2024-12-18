@@ -1,0 +1,21 @@
+assets:
+  version: VERSION
+  css:
+    theme:
+      assets/uswds/css/styles.css: {}
+  js:
+    assets/uswds/js/uswds-init.min.js: {}
+    assets/uswds/js/uswds.min.js: {}
+fontawesome:
+  version: VERSION
+  css:
+    theme:
+      assets/fontawesome/fontawesome.min.css: { minified: true}
+      assets/fontawesome/regular.min.css: { minified: true}
+      assets/fontawesome/solid.min.css: { minified: true}
+pgov:
+  version: VERSION
+  css:
+    theme:
+      assets/pgov/css/node--preview-form.css: {}
+      assets/pgov/css/site-branding.css: {}
