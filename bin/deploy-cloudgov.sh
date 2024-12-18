@@ -85,7 +85,4 @@ cf restart PGOV-CMS
 ROUTE=$(cf apps | grep PGOV-CMS | awk '{print $4}')
 echo
 echo
-echo "To log into the drupal site, you will want to go to https://${ROUTE}/user/login and get the username/password from the output of these commands:"
-echo "USERNAME:  cf e PGOV-CMS | grep ROOT_USER_NAME | sed 's/.*: \"\(.*\)\".*/\1/'"
-echo "PASSWORD:  cf e PGOV-CMS | grep ROOT_USER_PASS | sed 's/.*: \"\(.*\)\".*/\1/'"
-echo "  to get in.  Have fun!"
+echo "To log into the drupal site, you will want to go to https://${ROUTE}/user/login and enter your username/password."
