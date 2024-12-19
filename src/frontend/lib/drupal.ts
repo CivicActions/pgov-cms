@@ -9,6 +9,7 @@ export const drupal = new DrupalClient(
     },
     headers: {
       "Content-Type": "application/json",
+      'Authorization': `Basic ${btoa(process.env.BASIC_AUTH_USER + ':' + process.env.BASIC_AUTH_PASSWORD)}`
     },
   },
 );
