@@ -1,3 +1,9 @@
 _core:
   default_config_hash: c-knKQdQwnCtY9cwzSHofxLIkpZdYUGi13uCGVEFCHc
+categories:
+  strategic-plan: 'Strategic plans'
+  report: Reports
+  organization: Organizations
+  content: 'Site content'
 fallback_label: Uncategorized
+text_format: plain_text

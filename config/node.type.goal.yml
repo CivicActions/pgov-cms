@@ -10,12 +10,12 @@ third_party_settings:
     available_menus: {  }
     parent: ''
   type_tray:
-    type_category: _none
+    type_category: strategic-plan
     type_thumbnail: ''
     type_icon: ''
     type_description: ''
     existing_nodes_link_text: ''
-    type_weight: 0
+    type_weight: 10
 name: Goal
 type: goal
 description: 'An administration goal'

@@ -7,7 +7,7 @@ dependencies:
     - type_tray
 third_party_settings:
   type_tray:
-    type_category: _none
+    type_category: content
     type_thumbnail: ''
     type_icon: ''
     type_description: ''
