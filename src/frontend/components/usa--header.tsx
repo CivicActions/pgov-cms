@@ -11,10 +11,10 @@ export function USAHeader() {
   const onClick = (): void => setExpanded(prvExpanded => !prvExpanded);
 
   const menuItems = [
-    <Link href="/" className={`usa-nav__link ${pathname === "/" ? "usa-current" : ""}`}>
+    <Link key="0" href="/" className={`usa-nav__link ${pathname === "/" ? "usa-current" : ""}`}>
       <span>Goals</span>
     </Link>,
-    <Link href="/agencies" className={`usa-nav__link ${pathname.includes("/agencies") ? "usa-current" : ""}`}>
+    <Link key="1" href="/agencies" className={`usa-nav__link ${pathname.includes("/agencies") ? "usa-current" : ""}`}>
       <span>Agencies</span>
     </Link>,
   ];

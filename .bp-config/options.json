@@ -1,0 +1,11 @@
+{
+  "COMPOSER_INSTALL_OPTIONS": [
+    "--no-progress --no-interaction"
+  ],
+  "COMPOSER_VENDOR_DIR": "vendor",
+  "WEBDIR": "web",
+  "PHP_VERSION": "{PHP_83_LATEST}",
+  "ADDITIONAL_PREPROCESS_CMDS": [
+    "$HOME/bootstrap.sh"
+  ]
+}

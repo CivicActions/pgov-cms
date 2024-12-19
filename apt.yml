@@ -1,0 +1,7 @@
+---
+cleancache: true
+packages:
+  - mariadb-client
+  - nano
+  - apache2-utils
+  - sendmail
