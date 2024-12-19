@@ -8,7 +8,7 @@ import { NodeBasicPage } from "components/node--basic-page";
 import { NodeAgency } from "../components/node--agency";
 import { NodeGoal } from "components/node--goal";
 import { Layout } from "components/layout";
-import { nodeQueries, strategicPlanQueries } from "./api/node-queries";
+import { graphqlQueries } from "../lib/graphqlQueries";
 
 const RESOURCE_TYPES = ["node--page", "node--article", "node--agency", "node--goal"];
 
@@ -109,7 +109,7 @@ export async function getStaticProps(
       method: "POST",
       withAuth: true, // Make authenticated requests using OAuth.
       body: JSON.stringify({
-        query: nodeQueries.nodeGoal(path?.entity?.path),
+        query: graphqlQueries.nodeGoal(path?.entity?.path),
       }),
     });
     const { data } = await response.json();
@@ -121,7 +121,7 @@ export async function getStaticProps(
       method: "POST",
       withAuth: true, // Make authenticated requests using OAuth.
       body: JSON.stringify({
-        query: strategicPlanQueries.planNodeByAgency(agencyId),
+        query: graphqlQueries.planNodeByAgency(agencyId),
       }),
     });
     const { data } = await response.json();
