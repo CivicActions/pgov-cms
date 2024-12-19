@@ -1,0 +1,9 @@
+name: Time Periods
+description: Helper tools for organizing content by time period.
+package: Custom
+
+type: module
+core_version_requirement: ^10.3 || ^11
+
+dependencies:
+  - storage:storage
