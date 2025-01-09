@@ -59,13 +59,13 @@ export default function GoalsSearchView({ filters, goals, total, description }: 
         })
 
         if(hasFulltext ) {
-          
+
           return goal
         } else {
           return null
         }
       })
-      
+
     }
 
     if (activeTopics.length > 0) {
@@ -89,7 +89,7 @@ export default function GoalsSearchView({ filters, goals, total, description }: 
 
     setNotDisabledTopics(notDisabled)
     setFilteredGoalsCount(currentGoals.length)
-    
+
     if (resetOffset) {
       currentGoals = currentGoals.slice(0, 9);
       setOffset(9)
