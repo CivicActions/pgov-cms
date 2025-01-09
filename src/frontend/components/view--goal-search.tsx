@@ -4,6 +4,7 @@ import { NodeGoalProps, ViewFilter } from "lib/types";
 import { NodeGoalCard } from "./node--goal--card";
 import { ViewGoalSearchFacet } from "./view--goal-search--facet";
 import { ViewGoalSearchFulltext } from "./view--goal-search--fulltext";
+import { ViewGoalSearchResults } from "./view--goal-search--results";
 
 interface ViewGoalSearch {
   goals: Array<NodeGoalProps>,
@@ -12,9 +13,32 @@ interface ViewGoalSearch {
   total: number
 }
 
+async function getData(fulltext: string) {
+  const url = `/api/goal-search?fulltext=${fulltext}`;
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+    
+    const { data } = await response.json();
+    console.log(data);
+    return {
+      goals: data?.goalsGraphql1?.results ?? [],
+      filters: data?.goalsGraphql1?.filters ?? [],
+      total: data?.goalsGraphql1?.pageInfo?.total ?? 0,
+      description: data?.goalsGraphql1?.description ?? "",
+    };
+  } catch (error) {
+    console.error(error.message);
+  }
+  
+}
+
 export default function GoalsSearchView({ filters, goals, total, description }: ViewGoalSearch) {
-  const [fulltext, setFulltext] = useState(filters[0].value ? filters[0].value : "")
-  const [facets] = useState([...Object.keys(filters[1].options)])
+  const [fulltext, setFulltext] = useState(filters[0]?.value ? filters[0].value : "")
+  const [displayGoals, setDisplayGoals] = useState(goals)
+  const [facets] = useState(filters[1] ? [...Object.keys(filters[1]?.options)] : [])
   const [search, setSearch] = useState(false);
   const [offset, setOffset] = useState(9);
   const [activeTopics, setActiveTopics] = useState([])
@@ -22,9 +46,29 @@ export default function GoalsSearchView({ filters, goals, total, description }: 
   const [filteredGoals, setFilteredGoals] = useState([...goals])
   const [filteredGoalsCount, setFilteredGoalsCount] = useState(total)
 
-  function handleSearch(e: FormEvent) {
+  async function handleSearch(e: FormEvent) {
     e.preventDefault()
-    setSearch(true)
+    const url = `/api/goal-search?fulltext=${fulltext}`;
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+      }
+    
+      const { data } = await response.json();
+      console.log(data)
+      setDisplayGoals(data?.goalsGraphql1?.results ?? [])
+      setFilteredGoalsCount(data?.goalsGraphql1?.pageInfo?.total ?? 0)
+      // console.log(data);
+      // return {
+      //   goals: data?.goalsGraphql1?.results ?? [],
+      //   filters: data?.goalsGraphql1?.filters ?? [],
+      //   total: data?.goalsGraphql1?.pageInfo?.total ?? 0,
+      //   description: data?.goalsGraphql1?.description ?? "",
+      // };
+    } catch (error) {
+      console.error(error.message);
+    }
   }
 
   function updateTopicFilters(topic) {
@@ -38,81 +82,86 @@ export default function GoalsSearchView({ filters, goals, total, description }: 
     setActiveTopics(currentFilters)
   }
 
-  function filterGoals(resetOffset = false) {
-    let currentGoals = [...goals];
-    let notDisabled = []
-    if(fulltext.length > 0) {
-      currentGoals = currentGoals.filter((goal) => {
-        let hasFulltext = false;
-        const searchFields = [goal?.body?.value, goal.title];
-        searchFields.forEach((field) => {
-          if(field && field.toLowerCase().includes(fulltext.toLowerCase())) {
-            hasFulltext = true
-            if (goal.topics?.length) {
-              goal.topics.forEach((topic) => {
-                if(!notDisabled.includes(topic.name)) {
-                  notDisabled.push(topic.name)
-                }
-              })
-            }
-          }
-        })
+  // function filterGoals(resetOffset = false) {
+  //   console.log("dg", displayGoals)
+  //   let currentGoals = [...displayGoals];
+  //   let notDisabled = []
+  //   // if(fulltext.length > 0) {
+  //   //   currentGoals = currentGoals.filter((goal) => {
+  //   //     let hasFulltext = false;
+  //   //     const searchFields = [goal?.body?.value, goal.title];
+  //   //     searchFields.forEach((field) => {
+  //   //       if(field && field.toLowerCase().includes(fulltext.toLowerCase())) {
+  //   //         hasFulltext = true
+  //   //         if (goal.topics?.length) {
+  //   //           goal.topics.forEach((topic) => {
+  //   //             if(!notDisabled.includes(topic.name)) {
+  //   //               notDisabled.push(topic.name)
+  //   //             }
+  //   //           })
+  //   //         }
+  //   //       }
+  //   //     })
 
-        if(hasFulltext ) {
+  //   //     if(hasFulltext ) {
           
-          return goal
-        } else {
-          return null
-        }
-      })
+  //   //       return goal
+  //   //     } else {
+  //   //       return null
+  //   //     }
+  //   //   })
       
-    }
+  //   // }
 
-    if (activeTopics.length > 0) {
-      currentGoals = currentGoals.filter((goal) => {
-        let hasActiveTopic = false
-        if (!goal.topics) {
-          return null;
-        }
-        goal.topics.forEach((topic) => {
-          if(activeTopics.indexOf(topic.name) > -1) {
-            hasActiveTopic = true
-          }
-        })
-        if(hasActiveTopic) {
-          return goal
-        } else {
-          return null
-        }
-      })
-    }
+  //   if (activeTopics.length > 0) {
+  //     currentGoals = currentGoals.filter((goal) => {
+  //       let hasActiveTopic = false
+  //       if (!goal.topics) {
+  //         return null;
+  //       }
+  //       goal.topics.forEach((topic) => {
+  //         if(activeTopics.indexOf(topic.name) > -1) {
+  //           hasActiveTopic = true
+  //         }
+  //       })
+  //       if(hasActiveTopic) {
+  //         return goal
+  //       } else {
+  //         return null
+  //       }
+  //     })
+  //   }
 
-    setNotDisabledTopics(notDisabled)
-    setFilteredGoalsCount(currentGoals.length)
+  //   setNotDisabledTopics(notDisabled)
+  //   setFilteredGoalsCount(currentGoals.length)
     
-    if (resetOffset) {
-      currentGoals = currentGoals.slice(0, 9);
-      setOffset(9)
-    } else {
-      currentGoals = currentGoals.slice(0, offset);
-    }
-    setFilteredGoals(currentGoals)
-    setSearch(false)
-  }
+  //   if (resetOffset) {
+  //     currentGoals = currentGoals.slice(0, 9);
+  //     setOffset(9)
+  //   } else {
+  //     currentGoals = currentGoals.slice(0, offset);
+  //   }
+  //   setFilteredGoals(currentGoals)
+  //   setSearch(false)
+  // }
 
-  useEffect(() => {
-    if(search) {
-      filterGoals(true)
-    }
-  }, [search])
+  // useEffect(() => {
+  //   if(search) {
+  //     filterGoals(true)
+  //   }
+  // }, [search])
 
-  useEffect(() => {
-    filterGoals(true)
-  }, [activeTopics])
+  // useEffect(() => {
+  //   filterGoals(true)
+  // }, [activeTopics])
 
-  useEffect(() => {
-    filterGoals()
-  }, [offset])
+  // useEffect(() => {
+  //   filterGoals()
+  // }, [offset])
+
+  // useEffect(() => {
+  //   filterGoals()
+  // }, [displayGoals])
 
   return (
     <div>
@@ -149,9 +198,10 @@ export default function GoalsSearchView({ filters, goals, total, description }: 
           </div>
         )}
       </ul>
-      {filteredGoals?.length ? (
+      <ViewGoalSearchResults />
+      {/* {displayGoals?.length ? (
         <ul className="usa-card-group">
-          {filteredGoals.map((goal) => (
+          {displayGoals && displayGoals.map((goal) => (
             <li
               key={goal.id}
               className="usa-card tablet-lg:grid-col-6 desktop:grid-col-4"
@@ -179,7 +229,7 @@ export default function GoalsSearchView({ filters, goals, total, description }: 
             Show more
           </Button>
         }
-      </div>
+      </div> */}
     </div>
   );
 }
