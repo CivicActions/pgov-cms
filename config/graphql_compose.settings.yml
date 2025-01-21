@@ -196,8 +196,6 @@ field_config:
         enabled: true
       field_divisions:
         enabled: true
-      field_id:
-        enabled: true
       field_keyness:
         enabled: true
       field_measurements:

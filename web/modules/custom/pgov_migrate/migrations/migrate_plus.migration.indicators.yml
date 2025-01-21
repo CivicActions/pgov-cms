@@ -14,7 +14,6 @@ destination:
 process:
   # name: Use auto-title
   user_id: constants/uid
-  field_id: PgovID
   field_description/value: UnitOfMeasurement
   field_description/format: constants/body_format
   field_notes/value: OtherInformation
