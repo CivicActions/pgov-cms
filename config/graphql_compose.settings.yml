@@ -135,9 +135,6 @@ field_config:
         enabled: true
       field_goal_type:
         enabled: true
-      field_id:
-        enabled: true
-        name_sdl: fieldId
       field_objectives:
         enabled: true
       field_period:

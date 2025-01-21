@@ -6,7 +6,6 @@ dependencies:
     - core.entity_form_mode.node.inline
     - field.field.node.goal.body
     - field.field.node.goal.field_goal_type
-    - field.field.node.goal.field_id
     - field.field.node.goal.field_objectives
     - field.field.node.goal.field_period
     - field.field.node.goal.field_plan
@@ -121,14 +120,6 @@ content:
     weight: 6
     region: content
     settings: {  }
-    third_party_settings: {  }
-  field_id:
-    type: string_textfield
-    weight: 7
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
     third_party_settings: {  }
   field_objectives:
     type: inline_entity_form_complex_table_view_mode

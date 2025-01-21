@@ -25,7 +25,6 @@ process:
     callable: trim
     source: Name
   uid: constants/uid
-  field_id: PgovID
   body/value: Description
   body/format: constants/body_format
   field_goal_type:

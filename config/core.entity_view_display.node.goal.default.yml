@@ -4,10 +4,9 @@ status: true
 dependencies:
   config:
     - field.field.node.goal.body
-    - field.field.node.goal.field_period
     - field.field.node.goal.field_goal_type
-    - field.field.node.goal.field_id
     - field.field.node.goal.field_objectives
+    - field.field.node.goal.field_period
     - field.field.node.goal.field_plan
     - field.field.node.goal.field_topics
     - node.type.goal
@@ -33,14 +32,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 6
-    region: content
-  field_id:
-    type: string
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 2
     region: content
   field_objectives:
     type: entity_reference_label

@@ -5,10 +5,9 @@ dependencies:
   config:
     - core.entity_view_mode.node.full
     - field.field.node.goal.body
-    - field.field.node.goal.field_period
     - field.field.node.goal.field_goal_type
-    - field.field.node.goal.field_id
     - field.field.node.goal.field_objectives
+    - field.field.node.goal.field_period
     - field.field.node.goal.field_plan
     - field.field.node.goal.field_topics
     - node.type.goal
@@ -58,7 +57,6 @@ content:
     weight: 0
     region: content
 hidden:
-  field_id: true
   field_plan: true
   field_topics: true
   search_api_excerpt: true
