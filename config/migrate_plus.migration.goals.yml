@@ -33,8 +33,10 @@ process:
     plugin: static_map
     source: Alias
     map:
-      'Agency Priority Goal': apg
-      'Strategic Goal': strategic
+      'Agency Priority Goal': APG
+      'Cross-Agency Priority Goal': CAPG
+      'National Strategy Goal': National
+      'Strategic Goal': Strategic
     default_value: null
   field_period/target_id:
     plugin: period_lookup

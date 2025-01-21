@@ -12,10 +12,16 @@ type: list_string
 settings:
   allowed_values:
     -
-      value: apg
+      value: APG
       label: 'Agency Priority Goal'
     -
-      value: strategic
+      value: CAPG
+      label: 'Cross-Agency Priority Goal'
+    -
+      value: National
+      label: 'National Strategy Goal'
+    -
+      value: Strategic
       label: 'Strategic Goal'
   allowed_values_function: ''
 module: options
