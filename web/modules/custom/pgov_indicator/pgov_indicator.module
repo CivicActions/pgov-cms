@@ -1,0 +1,14 @@
+<?php
+
+die;
+/**
+ * Implements hook_ENTITY_presave())
+ */
+function pgov_indicator_entity_presave(\Drupal\Core\Entity\EntityInterface $entity) {
+  // Ensure all associated measurements are in chronological order.
+  if ($entity->bundle() == 'indicator' && $entity->hasField('field_measurements')) {
+    if ($values = $entity->get('field_measurements')->value) {
+      $values = $values;
+    }
+  }
+}
