@@ -13,6 +13,8 @@ source:
   plugin: airtable
   base: 'StratML x US Performance'
   table: PerformancePlanOrReport
+  sort: EndDate
+  direction: asc
   constants:
     uid: 1
     body_format: basic_html
