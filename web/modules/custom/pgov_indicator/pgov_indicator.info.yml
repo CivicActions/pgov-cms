@@ -1,0 +1,6 @@
+name: Indicators and Measurements
+description: Custom behaviors and business rules for Performance indicators and associated measurements.
+package: Custom
+
+type: module
+core_version_requirement: ^10.3 || ^11
