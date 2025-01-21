@@ -17,10 +17,10 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:storage'
+  handler: pgov_period_storage_selection
   handler_settings:
     target_bundles:
-      period: period
+      - period
     sort:
       field: _none
       direction: ASC

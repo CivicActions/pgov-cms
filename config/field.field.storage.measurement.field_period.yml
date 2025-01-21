@@ -4,8 +4,8 @@ status: true
 dependencies:
   config:
     - field.storage.storage.field_period
-    - storage.storage_type.period
     - storage.storage_type.measurement
+    - storage.storage_type.period
 id: storage.measurement.field_period
 field_name: field_period
 entity_type: storage
@@ -17,10 +17,10 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:storage'
+  handler: pgov_period_storage_selection
   handler_settings:
     target_bundles:
-      period: period
+      - period
     sort:
       field: _none
       direction: ASC
