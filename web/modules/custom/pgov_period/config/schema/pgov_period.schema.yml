@@ -1,0 +1,6 @@
+entity_reference_selection.NOT_pgov_period:
+  type: entity_reference_selection.default
+
+entity_reference_selection.pgov_period_storage_selection:
+  type: entity_reference_selection.default
+  label: 'Time period handler settings'
