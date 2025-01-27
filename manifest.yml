@@ -1,0 +1,29 @@
+---
+version: 1
+default_config: &defaults
+  buildpacks:
+    - https://github.com/cloudfoundry/apt-buildpack
+    - php_buildpack
+  disk_quota: 4G
+  stack: cflinuxfs4
+  timeout: 180
+  services:
+    - database # cf create-service aws-rds shared-mysql database
+    - secrets  # cf create-user-provided-service secrets -p '{
+      # "CRON_KEY": ...
+      # "HASH_SALT": ...
+    # "ROOT_USER_NAME": ...,
+    # "ROOT_USER_PASS": ...,
+    # }'
+    - storage  # cf create-service s3 basic-sandbox storage
+
+applications:
+  - name: PGOV-CMS
+    <<: *defaults
+    memory: 512M
+    instances: 1
+  - name: PGOV-Frontend
+    path: ./src/frontend
+    memory: 256M
+    buildpacks:
+      - nodejs_buildpack
