@@ -66,6 +66,7 @@ module:
   page_cache: 0
   path: 0
   path_alias: 0
+  pgov_indicator: 0
   pgov_migrate: 0
   rest: 0
   search: 0
