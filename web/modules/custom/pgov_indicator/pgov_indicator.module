@@ -1,14 +1,62 @@
 <?php
 
-die;
 /**
- * Implements hook_ENTITY_presave())
+ * @file
+ * Module hooks that affect Indicators and Measurements.
  */
-function pgov_indicator_entity_presave(\Drupal\Core\Entity\EntityInterface $entity) {
-  // Ensure all associated measurements are in chronological order.
-  if ($entity->bundle() == 'indicator' && $entity->hasField('field_measurements')) {
-    if ($values = $entity->get('field_measurements')->value) {
-      $values = $values;
+
+/**
+ * Implements hook_ENTITY_TYPE_load().
+ *
+ * Inspects all Indicator storage entities and ensures that its list of
+ * related measurements appear in chronological order.
+ */
+function pgov_indicator_storage_load(array $entities) {
+  foreach ($entities as $entity) {
+
+    if ($entity->bundle() == 'indicator' && $entity->hasField('field_measurements')) {
+      $field = $entity->get('field_measurements');
+      $values_original = $field->getValue();
+      if ($values = $field->referencedEntities()) {
+        // Sort the current value.
+        usort($values, '_pgov_indicator_sort');
+
+        // Re-set field values if the new deltas are in a different sequence.
+        foreach ($values as $delta => $value) {
+          if ($values_original[$delta]['target_id'] != $value->id()) {
+            $field->set($delta, $value);
+          }
+        }
+      }
     }
   }
+}
+
+/**
+ * A callback for usort() that orders entities by date, based on field_period.
+ */
+function _pgov_indicator_sort($entity1, $entity2): int {
+  if (_pgov_indicator_get_date($entity1) > _pgov_indicator_get_date($entity2)) {
+    return 1;
+  }
+  return 0;
+}
+
+/**
+ * Get the value of $entity->field_period->field_date_range, as a timestamp.
+ *
+ * @return int
+ *   unix timestamp of the date range related to a measurement's time period.
+ */
+function _pgov_indicator_get_date($entity): int {
+  if ($entity->hasField('field_period')) {
+    $period = current($entity->get('field_period')->referencedEntities());
+    if ($period && $period->hasField('field_date_range')) {
+      $range = current($period->get('field_date_range')->getValue());
+      if ($range) {
+        return strtotime($range['end_value'] ?: $range['value']);
+      }
+    }
+  }
+  return 0;
 }
