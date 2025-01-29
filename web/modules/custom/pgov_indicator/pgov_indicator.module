@@ -11,7 +11,7 @@
  * Inspects all Indicator storage entities and ensures that its list of
  * related measurements appear in chronological order.
  */
-function pgov_indicator_storage_load(array $entities) {
+function pgov_indicator_storage_load(array $entities): void {
   foreach ($entities as $entity) {
 
     if ($entity->bundle() == 'indicator' && $entity->hasField('field_measurements')) {
