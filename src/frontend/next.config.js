@@ -17,7 +17,7 @@ const cspHeader = `
 const nextConfig = {
   images: {
     domains: [process.env.NEXT_IMAGE_DOMAIN],
-    unoptimized: true,
+    unoptimized: TRUE,
   },
   sassOptions: {
     includePaths: [

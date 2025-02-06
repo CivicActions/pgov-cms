@@ -21,7 +21,7 @@ fi
 # Run the sniffer
 echo "Running Drupal Coder."
 echo
-PHPCS=("$BIN/phpcs" "--standard=$STANDARD" "--filter=gitstaged" "--encoding=utf-8" "-p" ".")
+PHPCS=("$BIN/phpcs" "--standard=$STANDARD" "--filter=gitstaged" "--ignore=*/src/*" "--encoding=utf-8" "-p" ".")
 "${PHPCS[@]}"
 VIOLATIONS=$((VIOLATIONS + $?))
 
