@@ -1,0 +1,11 @@
+uuid: 8acf35ef-4a5b-4b35-874d-6e6562ce8d43
+langcode: en
+status: true
+dependencies: {  }
+id: dev
+label: Dev
+base_url: 'https://pgov-frontend.app.cloud.gov/'
+preview_url: 'https://pgov-frontend.app.cloud.gov/api/draft'
+preview_secret: secret
+revalidate_url: ''
+revalidate_secret: ''

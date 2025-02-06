@@ -1,11 +1,18 @@
 uuid: dc5778e1-02cd-4642-b866-0afc577b5e79
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - next_extras
+third_party_settings:
+  next_extras:
+    revalidate: false
+    revalidate_paths: ''
 id: node.agency
 site_resolver: site_selector
 configuration:
   sites:
+    dev: dev
     pgov_frontend: pgov_frontend
 revalidator: ''
 revalidator_configuration: {  }
