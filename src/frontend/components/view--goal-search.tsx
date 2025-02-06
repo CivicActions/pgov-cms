@@ -23,7 +23,7 @@ export default function GoalsSearchView({ filters, goals, total, description }: 
   const [facets, setFacets] = useState(filters[1]?.options ? filters[1].options : [])
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [offset, setOffset] = useState(offsetAmount);
-  
+
   const handleSearch = useCallback(async (e: FormEvent, facets: Array<string> = []) => {
     if (e) {
       e.preventDefault();
@@ -35,7 +35,7 @@ export default function GoalsSearchView({ filters, goals, total, description }: 
       if (!response.ok) {
         throw new Error(`Response status: ${response.status}`);
       }
-    
+
       const { data } = await response.json();
       setDisplayGoals(data?.goalsGraphql1?.results ?? []);
       setTotalResults(data?.goalsGraphql1?.pageInfo.total);
@@ -49,16 +49,20 @@ export default function GoalsSearchView({ filters, goals, total, description }: 
   const masonryBP = filtersOpen ? {350: 1, 750: 2, 1400: 3} : {350: 1, 750: 2, 1060: 3, 1400: 4};
   return (
     <div>
-      <div className="grid-row flex-justify-center">
+      <div className="grid-row flex-column flex-align-center hero text-white padding-y-5">
         <h1 className="font-heading-2xl">{description}</h1>
+        <p className="font-sans-lg margin-y-0">Smart Strategy. Strong Execution.</p>
+        <p className="font-sans-lg margin-top-0">Data-Driven Updates on America’s Strategic Goals.</p>
       </div>
-      <button onClick={() => setFiltersOpen(!filtersOpen)}>Filter</button>
-      <ViewGoalSearchFulltext
-        fulltext={fulltext}
-        setFulltext={setFulltext}
-        handleSearch={handleSearch}
-      />
-      
+      <div className="display-flex flex-justify-center">
+        <button onClick={() => setFiltersOpen(!filtersOpen)}>Filter</button>
+        <ViewGoalSearchFulltext
+          fulltext={fulltext}
+          setFulltext={setFulltext}
+          handleSearch={handleSearch}
+        />
+      </div>
+
       <div className="grid-row">
         <div className={`side-bar ${filtersOpen ? "" : "filters-closed"}`}>
           <ViewGoalFacets filter_options={facets} handleSearch={handleSearch} />
@@ -75,10 +79,10 @@ export default function GoalsSearchView({ filters, goals, total, description }: 
                 ))}
               </Masonry>
           </ResponsiveMasonry>
-          
+
         ) : (
             <div className="usa-alert usa-alert--warning usa-alert--slim">
-              <div className="usa-alerjt__body">
+              <div className="usa-alert__body">
                 <p className="usa-alert__text">
                   No matching goals.
                 </p>

@@ -35,3 +35,14 @@
 .content-area {
   flex: 1;
 }
+
+.hero {
+  background-color: #09102a;
+  background-size: 20px 30px;
+  background-image: linear-gradient(
+      to right,
+      rgba(217, 217, 217, 0.1) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(217, 217, 217, 0.1) 1px, transparent 1px);
+}
