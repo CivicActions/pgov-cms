@@ -6,6 +6,7 @@ import { NodeGoalCard } from "./node--goal--card";
 import { ViewGoalSearchFacet } from "./view--goal-search--facet";
 import { ViewGoalSearchFulltext } from "./view--goal-search--fulltext";
 import { ViewGoalSearchResults } from "./view--goal-search--results";
+import { ViewGoalSearchAdministration } from "./view--goal-search--administration"
 import ViewGoalFacets from "./view--goal-facets";
 
 interface ViewGoalSearch {
@@ -37,6 +38,7 @@ export default function GoalsSearchView({ filters, goals, total, description }: 
       }
 
       const { data } = await response.json();
+      console.log(data);
       setDisplayGoals(data?.goalsGraphql1?.results ?? []);
       setTotalResults(data?.goalsGraphql1?.pageInfo.total);
       setFacets(data?.goalsGraphql1?.filters[1].options)
@@ -54,13 +56,22 @@ export default function GoalsSearchView({ filters, goals, total, description }: 
         <p className="font-sans-lg margin-y-0">Smart Strategy. Strong Execution.</p>
         <p className="font-sans-lg margin-top-0">Data-Driven Updates on America’s Strategic Goals.</p>
       </div>
-      <div className="display-flex flex-justify-center">
-        <button onClick={() => setFiltersOpen(!filtersOpen)}>Filter</button>
-        <ViewGoalSearchFulltext
-          fulltext={fulltext}
-          setFulltext={setFulltext}
-          handleSearch={handleSearch}
-        />
+      <div className="grid-row flex-row flex-align-center padding-x-2 padding-y-1 bg-white">
+        <div className="grid-col flex-auto">
+          <button className="usa-button usa-button--unstyled text-no-underline padding-x-2 padding-y-105 text-bold text-black search-goals--filter" onClick={() => setFiltersOpen(!filtersOpen)}>Filter by
+            topic
+          </button>
+        </div>
+        <div className="grid-col flex-fill">
+          <ViewGoalSearchFulltext
+            fulltext={fulltext}
+            setFulltext={setFulltext}
+            handleSearch={handleSearch}
+          />
+        </div>
+        <div className="grid-col flex-auto">
+          <ViewGoalSearchAdministration />
+        </div>
       </div>
 
       <div className="grid-row">
