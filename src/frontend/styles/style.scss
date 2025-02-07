@@ -48,6 +48,9 @@
 }
 
 .search-goals {
+  &--container {
+    border-bottom: 1px solid rgba(202, 204, 216, 1);
+  }
   &--filter {
     border: 1px solid rgba(202, 204, 216, 1); // Add outline with the specified color
   }

@@ -56,10 +56,10 @@ export default function GoalsSearchView({ filters, goals, total, description }: 
         <p className="font-sans-lg margin-y-0">Smart Strategy. Strong Execution.</p>
         <p className="font-sans-lg margin-top-0">Data-Driven Updates on America’s Strategic Goals.</p>
       </div>
-      <div className="grid-row flex-row flex-align-center padding-x-2 padding-y-1 bg-white">
+      <div className="grid-row flex-row flex-align-center padding-x-205 padding-y-105 bg-white search-goals--container">
         <div className="grid-col flex-auto">
-          <button className="usa-button usa-button--unstyled text-no-underline padding-x-2 padding-y-105 text-bold text-black search-goals--filter" onClick={() => setFiltersOpen(!filtersOpen)}>Filter by
-            topic
+          <button className="usa-button usa-button--unstyled text-no-underline padding-x-2 padding-y-105 text-bold text-black search-goals--filter" onClick={() => setFiltersOpen(!filtersOpen)}>
+            Filter by topic
           </button>
         </div>
         <div className="grid-col flex-fill">
@@ -72,6 +72,9 @@ export default function GoalsSearchView({ filters, goals, total, description }: 
         <div className="grid-col flex-auto">
           <ViewGoalSearchAdministration />
         </div>
+      </div>
+      <div className="grid-row">
+        
       </div>
 
       <div className="grid-row">

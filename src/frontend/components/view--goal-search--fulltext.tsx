@@ -14,7 +14,7 @@ export function ViewGoalSearchFulltext({
 
   return (
     <form onSubmit={(e: FormEvent) => {handleSearch(e)}}>
-      <div className="search-goals--wrapper padding-x-1">
+      <div className="search-goals--wrapper padding-x-105">
         <label className="usa-sr-only" htmlFor="search-goals">Search goals</label>
         <input
           id="search-goals"
