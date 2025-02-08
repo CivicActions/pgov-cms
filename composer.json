@@ -26,7 +26,6 @@
         "cweagans/composer-patches": "^1.7",
         "drupal/better_exposed_filters": "^7.0",
         "drupal/cer": "^5.0@beta",
-        "drupal/coder": "^8.3",
         "drupal/core-composer-scaffold": "^10.3",
         "drupal/core-project-message": "^10.3",
         "drupal/core-recommended": "^10.3",

@@ -5,24 +5,36 @@ VIOLATIONS=0
 # Check backend
 STANDARD="Drupal"
 BIN="./vendor/bin"
+DDEV="/usr/bin/ddev"
+
+# Respect the configuration file included in the repo, if it exists.
+if [ -f phpcs.xml ]; then
+  STANDARD="phpcs.xml"
+fi
 
 echo
 echo "Drupal Coder pre-commit hook – commit with the --no-verify option to skip the hook"
 echo
 
 # Check whether PHP_CodeSniffer can be found
-if [ ! -f "$BIN/phpcs" ]
-then
-  echo "Drupal Coder not found – is it installed? 'composer require drupal/coder'"
-  echo
-  exit 1
+if [ -f "$BIN/phpcs" ]; then
+
+  # Run the check in ddev, if this is a ddev site.
+  if [ -d .ddev ] && [ -x $DDEV ]; then
+    PHPCS="$DDEV exec phpcs"
+  else
+    PHPCS="$BIN/phpcs"
+  fi
+
+else
+  echo "Drupal Coder not found – is it installed?"
 fi
 
 # Run the sniffer
-echo "Running Drupal Coder."
+echo "Running Drupal Coder: ${PHPCS}"
 echo
-PHPCS=("$BIN/phpcs" "--standard=$STANDARD" "--filter=gitstaged" "--encoding=utf-8" "-p" ".")
-"${PHPCS[@]}"
+OUTPUT=(${PHPCS} --standard=${STANDARD} --filter=GitStaged --encoding=utf-8 -p .)
+"${OUTPUT[@]}"
 VIOLATIONS=$((VIOLATIONS + $?))
 
 # Check frontend
