@@ -5,7 +5,7 @@ Sandbox Frontend URL: http://localhost:3000
 
 ## Setup for local sandbox if no database exists
 1. `ddev start`
-2. `dev composer install`
+2. `ddev composer install`
 3. `ddev drush si --existing-config`
 
 
